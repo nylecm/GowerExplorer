@@ -11,6 +11,8 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptor
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
@@ -26,9 +28,21 @@ class MapHome : Fragment() {
          * install it inside the SupportMapFragment. This method will only be triggered once the
          * user has installed Google Play services and returned to the app.
          */
-        val sydney = LatLng(-34.0, 151.0)
-        googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        // Add a marker in Sydney and move the camera
+        val rhossili = LatLng(51.57230253453608, -4.291339367942704)
+        googleMap.addMarker(MarkerOptions().position(rhossili).title("Rhossili")
+            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)))
+        val portEynon = LatLng(51.544325787706306, -4.210278367615245)
+        googleMap.addMarker(MarkerOptions().position(portEynon).title("Port Eynon")
+            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)))
+        val whitefordLightHouse = LatLng(51.65308998230439, -4.250174428774476)
+        googleMap.addMarker(MarkerOptions().position(whitefordLightHouse).title("Whiteford Light House")
+            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)))
+        val arthursStone = LatLng(51.593617098371, -4.179297132938529)
+        googleMap.addMarker(MarkerOptions().position(arthursStone).title("Whiteford Light House")
+            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)))
+
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(rhossili))
     }
 
     override fun onCreateView(
