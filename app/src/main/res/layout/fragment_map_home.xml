@@ -9,35 +9,71 @@
         tools:context=".MapHome">
 
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/map"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".MapHome"></fragment>
+    <!--    <androidx.coordinatorlayout.widget.CoordinatorLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="top"-->
+<!--        tools:ignore="MissingConstraints">-->
+<!--        -->
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:backgroundTint="#444FFF"-->
+<!--            android:src="@drawable/ic_baseline_person_24"-->
+<!--            android:layout_gravity="right"-->
+<!--            android:contentDescription="filter" />-->
+<!--    </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
 
-        <!--    <Button-->
-        <!--        android:id="@+id/btn"-->
-        <!--        android:layout_width="match_parent"-->
-        <!--        android:layout_height="wrap_content"-->
-        <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--        app:layout_constraintEnd_toEndOf="parent"-->
-        <!--        app:layout_constraintStart_toStartOf="parent"-->
-        <!--        app:layout_constraintTop_toTopOf="parent" />-->
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MapHome"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"></fragment>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:backgroundTint="#444FFF"
+            android:contentDescription="filter"
+            android:src="@drawable/ic_baseline_person_24" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/map"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coordinatorLayout"
+        app:layout_constraintVertical_bias="0.88"
         tools:ignore="MissingConstraints">
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#444FFF"
-        android:src="@drawable/ic_baseline_person_24"
-        android:layout_gravity="center"
-        android:contentDescription="TODO" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:backgroundTint="#444FFF"
+            android:contentDescription="filter"
+            android:src="@drawable/ic_baseline_person_24" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
