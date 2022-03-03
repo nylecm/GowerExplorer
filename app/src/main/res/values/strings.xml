@@ -4,4 +4,13 @@
     <string name="title_poi_list">PoI List</string>
     <string name="title_dashboard">Itineraries</string>
     <string name="title_notifications">Profile</string>
+    <string name="mile">mi</string>
+    <string name="desc_whiteford_lighthouse">"It is an unusual cast-iron lighthouse built in 1865 to a design by John Bowen (1825–1873) of Llanelli, by the Llanelli Harbour and Burry Navigation Commissioners to mark the shoals of Whiteford Point, replacing an earlier piled structure of 1854, of which nothing remains. "</string>
+    <string name="desc_port_eynon">Port Eynon Bay is a very popular beach resort beside the village of Port Eynon. Port Eynon Point is the most southerly point of the Gower Peninsula.</string>
+    <string name="desc_rhossili">Rhossili Bay lies at the western end of the beautiful Gower peninsula. 3 miles of golden sands, iconic landscapes including Worms Head and Rhossili Down and history everywhere- from neolithic through to the more recent, including home to Edgar Evans.</string>
+    <string name="desc_arthurs_stone">One of Wales’ most famous prehistoric monuments, the 25-ton capstone sits majestically on top of Cefyn Bryn Common</string>
+    <string name="desc_caswell">"A lovely little bay with a gently sloping sand beach. Great for people of all ages and for all activities - surfing, paddle-boarding, making sand castles, and ... "</string>
+    <string name="desc_three_cliffs">"Three Cliffs Bay beach offers a wilder experience. Picture a spectacular shoreline of sand dunes, salt marsh and limestone cliffs. "</string>
+    <string name="desc_langland">Langland Bay is a popular coastal holiday resort in Gower, Swansea in south Wales. It is a popular surfing beach which regularly meets the European Blue Flag award for quality.</string>
+    <string name="desc_oystermouth_castle">Oystermouth Castle is a Norman stone castle in Wales, overlooking Swansea Bay on the east side of the Gower Peninsula near the village of Mumbles.</string>
 </resources>
