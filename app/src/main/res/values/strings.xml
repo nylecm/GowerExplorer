@@ -14,4 +14,7 @@
     <string name="desc_langland">Langland Bay is a popular coastal holiday resort in Gower, Swansea in south Wales. It is a popular surfing beach which regularly meets the European Blue Flag award for quality.</string>
     <string name="desc_oystermouth_castle">Oystermouth Castle is a Norman stone castle in Wales, overlooking Swansea Bay on the east side of the Gower Peninsula near the village of Mumbles.</string>
     <string name="thumbnail_image">thumbnail image</string>
+    <string name="search">SEARCH</string>
+    <string name="search_button">Search Button</string>
+    <string name="filter_button">filter button</string>
 </resources>

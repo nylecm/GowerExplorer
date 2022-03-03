@@ -68,7 +68,7 @@ class ItemFragment : Fragment() {
             getText(R.string.desc_caswell), getText(R.string.desc_three_cliffs), getText(R.string.desc_langland), getText(R.string.desc_oystermouth_castle)
         )
         val myDistanceList = arrayOf(
-            10.5,5.2,4.2,1.2,5.3,14.1,3.8,2.3
+            10.5,5.2,8.5,1.2,5.3,14.1,3.8,2.3
         )
         val myPointsList = arrayOf(
             30,20,20,15,15,20,15,10
@@ -92,7 +92,7 @@ class ItemFragment : Fragment() {
             list.add(imageModel)
         }
 
-        list.sortBy { list -> list.title }
+        list.sortBy { list -> list.distance }
         return list
     }
 }
