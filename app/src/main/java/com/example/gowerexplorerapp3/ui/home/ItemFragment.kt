@@ -1,6 +1,7 @@
 package com.example.gowerexplorerapp3.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,6 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.gowerexplorerapp3.R
 import com.example.gowerexplorerapp3.placeholder.PlaceholderContent
+import com.google.android.gms.maps.SupportMapFragment
+import kotlin.reflect.typeOf
 
 /**
  * A fragment representing a list of Items.
@@ -32,8 +35,9 @@ class ItemFragment : Fragment() {
     ): View? {
         val content = populate()
 
-        val view = inflater.inflate(R.layout.fragment_item_list, container, false)
-
+        val ui = inflater.inflate(R.layout.fragment_item_list, container, false)
+        val view = ui.findViewById<RecyclerView>(R.id.list)
+        Log.i("ddd", view::class.java.typeName)
         // Set the adapter
         if (view is RecyclerView) {
             with(view) {
@@ -44,7 +48,7 @@ class ItemFragment : Fragment() {
                 adapter = MyItemRecyclerViewAdapter(content)
             }
         }
-        return view
+        return ui
     }
 
     private fun populate(): ArrayList<PoiModel> {
