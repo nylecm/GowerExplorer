@@ -60,8 +60,8 @@ class ItemFragment : Fragment() {
             R.drawable.three_cliffs, R.drawable.langland, R.drawable.oystermouth_castle
         )
         val myTitleList = arrayOf(
-            "whiteford_lighthouse", "port_eynon", "rhossili", "arthurs_stone",
-            "caswell", "three_cliffs", "langland", "oystermouth_castle"
+            "Whiteford Lighthouse", "Port Eynon Bay", "Rhossili Bay", "Arthur's Stone",
+            "Caswell", "Three Cliffs", "Langland Bay", "Oystermouth Castle"
         )
         val myDescriptionList = arrayOf(
             getText(R.string.desc_whiteford_lighthouse), getText(R.string.desc_port_eynon), getText(R.string.desc_rhossili), getText(R.string.desc_arthurs_stone),
