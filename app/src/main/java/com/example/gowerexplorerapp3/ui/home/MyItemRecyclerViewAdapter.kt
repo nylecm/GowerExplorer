@@ -1,10 +1,16 @@
 package com.example.gowerexplorerapp3.ui.home
 
+import android.annotation.SuppressLint
+import android.content.res.Resources
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ResourceCursorTreeAdapter
 import android.widget.TextView
+import androidx.core.content.res.ResourcesCompat.getColor
+import androidx.core.view.marginTop
+import com.example.gowerexplorerapp3.R
 
 import com.example.gowerexplorerapp3.databinding.FragmentItemBinding
 import org.w3c.dom.Text
@@ -34,7 +40,27 @@ class MyItemRecyclerViewAdapter(
         holder.thumbnail.setImageResource(item.img)
         holder.distance.text = item.distanceTo() + " | " + item.poiPoints.toString() + " Points"
         holder.poiDescription.text = item.description
-        holder.poiIsExplored.text = if (item.isPoiExplored) "Explored" else "Unexplored" // todo Does Kotlin do ternaries
+
+        if (item.isPoiExplored) {
+            holder.poiIsExplored.text = "Explored"
+        }
+        // todo Does Kotlin do ternaries
+
+        if (item.subPois != null) {
+            var subPointsString = "Sub-PoIs: "
+            for (i in item.subPois!!.indices) {
+                subPointsString += item.subPois!![i]
+                if (i < item.subPois!!.size - 2)
+                    subPointsString += ", "
+                else if (i == item.subPois!!.size - 2)
+                    subPointsString += ", and "
+                else
+                    subPointsString += "."
+            }
+            holder.poiSubPoints.maxLines = 10
+            holder.poiSubPoints.setPadding(0,8,0,0)
+            holder.poiSubPoints.text = subPointsString
+        }
     }
 
     override fun getItemCount(): Int = values.size
@@ -45,6 +71,7 @@ class MyItemRecyclerViewAdapter(
         val distance: TextView = binding.distance
         val poiDescription: TextView = binding.poiDescription
         val poiIsExplored: TextView = binding.poiIsExplored
+        val poiSubPoints: TextView = binding.subPois
 
         override fun toString(): String {
             return super.toString() + " '" + poiNameView.text + "'"

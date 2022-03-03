@@ -1,9 +1,7 @@
 package com.example.gowerexplorerapp3.ui.home
 
-import android.content.res.Resources
-import com.example.gowerexplorerapp3.R
-
 class PoiModel {
+    var subPois: Array<String>? = null;
     var poiPoints: Int = 0
     var title: String? = null
     var description: String? = null

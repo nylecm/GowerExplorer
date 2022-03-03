@@ -69,6 +69,12 @@ class ItemFragment : Fragment() {
         val myPointsList = arrayOf(
             30,20,20,15,15,20,15,10
         )
+        val myExploredList = arrayOf(
+            true,false,true,false,true,false,true,false
+        )
+        val mySubPointList = arrayOf(
+            arrayOf("Northernmost Point"), arrayOf("Southernmost Point"), arrayOf("Worm's Head", "Shipwreck", "Coastguard's House") ,null, null,null,null,null
+        )
 
         for (i in 0..7) {
             val imageModel = PoiModel()
@@ -77,6 +83,8 @@ class ItemFragment : Fragment() {
             imageModel.description = myDescriptionList[i].toString()
             imageModel.distance = myDistanceList[i]
             imageModel.poiPoints = myPointsList[i]
+            imageModel.isPoiExplored = myExploredList[i]
+            imageModel.subPois = mySubPointList[i]
             list.add(imageModel)
         }
 
