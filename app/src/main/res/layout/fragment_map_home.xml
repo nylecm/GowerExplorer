@@ -39,6 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:paddingTop="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,9 +51,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:backgroundTint="#444FFF"
+            android:backgroundTint="@color/pri_200"
             android:contentDescription="filter"
-            android:src="@drawable/ic_baseline_person_24" />
+            android:src="@drawable/ic_baseline_layers_24" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -62,6 +63,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="?attr/actionBarSize"
+        android:paddingBottom="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/map"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,9 +75,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:backgroundTint="#444FFF"
+            android:backgroundTint="@color/pri_200"
             android:contentDescription="centre"
-            android:src="@drawable/ic_baseline_person_24" />
+            android:src="@drawable/ic_baseline_my_location_24" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
