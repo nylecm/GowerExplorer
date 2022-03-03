@@ -9,11 +9,11 @@ import com.example.gowerexplorerapp3.placeholder.PlaceholderContent.PlaceholderI
 import com.example.gowerexplorerapp3.databinding.FragmentItemBinding
 
 /**
- * [RecyclerView.Adapter] that can display a [PlaceholderItem].
+ * [RecyclerView.Adapter] that can display a [PoiModel].
  * TODO: Replace the implementation with code for your data type.
  */
 class MyItemRecyclerViewAdapter(
-    private val values: List<PlaceholderItem>
+    private val values: List<PoiModel>
 ) : RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -30,8 +30,7 @@ class MyItemRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.idView.text = item.id
-        holder.contentView.text = item.content
+        holder.idView.text = item.title
     }
 
     override fun getItemCount(): Int = values.size
