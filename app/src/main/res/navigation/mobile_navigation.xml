@@ -31,7 +31,7 @@
     <fragment
         android:id="@+id/itemFragment"
         android:name="com.example.gowerexplorerapp3.ItemFragment"
-        android:label="fragment_item_list"
+        android:label="@string/title_poi_list"
         tools:layout="@layout/fragment_item_list" />
 
 </navigation>
