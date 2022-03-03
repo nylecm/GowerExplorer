@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_map_home" />
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.gowerexplorerapp3.ui.home.HomeFragment"
-        android:label="@string/title_list_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_poi_list"
+        android:name="com.example.gowerexplorerapp3.ui.home.PoiListFragment"
+        android:label="@string/title_poi_list"
+        tools:layout="@layout/fragment_poi_list" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
