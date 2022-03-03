@@ -32,9 +32,9 @@ class MyItemRecyclerViewAdapter(
         val item = values[position]
         holder.poiNameView.text = item.title
         holder.thumbnail.setImageResource(item.img)
-        holder.distance.text = item.distanceTo()
+        holder.distance.text = item.distanceTo() + " | " + item.poiPoints.toString() + " Points"
         holder.poiDescription.text = item.description
-        holder.poiPoints.text = item.poiPoints.toString() + " Points"
+        holder.poiIsExplored.text = if (item.isPoiExplored) "Explored" else "Unexplored" // todo Does Kotlin do ternaries
     }
 
     override fun getItemCount(): Int = values.size
@@ -44,7 +44,7 @@ class MyItemRecyclerViewAdapter(
         val poiNameView: TextView = binding.poiName
         val distance: TextView = binding.distance
         val poiDescription: TextView = binding.poiDescription
-        val poiPoints: TextView = binding.poiPoints
+        val poiIsExplored: TextView = binding.poiIsExplored
 
         override fun toString(): String {
             return super.toString() + " '" + poiNameView.text + "'"

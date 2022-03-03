@@ -52,7 +52,7 @@
                 android:text="-2.5mi"/>
 
             <TextView
-                android:id="@+id/poi_points"
+                android:id="@+id/poi_is_explored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
