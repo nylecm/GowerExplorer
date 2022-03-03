@@ -63,16 +63,16 @@ class ItemFragment : Fragment() {
             getText(R.string.desc_whiteford_lighthouse), getText(R.string.desc_port_eynon), getText(R.string.desc_rhossili), getText(R.string.desc_arthurs_stone),
             getText(R.string.desc_caswell), getText(R.string.desc_three_cliffs), getText(R.string.desc_langland), getText(R.string.desc_oystermouth_castle)
         )
-//        val myDistanceList = arrayOf(
-//            getText(R.string.desc_whiteford_lighthouse), getText(R.string.desc_port_eynon), getText(R.string.desc_rhossili), getText(R.string.desc_arthurs_stone),
-//            getText(R.string.desc_caswell), getText(R.string.desc_three_cliffs), getText(R.string.desc_langland), getText(R.string.desc_oystermouth_castle)
-//        )
+        val myDistanceList = arrayOf(
+            10.5,5.2,4.2,1.2,5.3,14.1,3.8,2.3
+        )
 
         for (i in 0..7) {
             val imageModel = PoiModel()
             imageModel.title = myTitleList[i]
             imageModel.img = myImageList[i]
             imageModel.description = myDescriptionList[i].toString()
+            imageModel.distance = myDistanceList[i]
             list.add(imageModel)
         }
 
