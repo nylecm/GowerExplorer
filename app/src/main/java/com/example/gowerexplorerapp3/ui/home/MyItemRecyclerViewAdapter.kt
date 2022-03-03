@@ -1,9 +1,12 @@
 package com.example.gowerexplorerapp3.ui.home
 
+import android.media.Image
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import com.example.gowerexplorerapp3.R
 
 import com.example.gowerexplorerapp3.placeholder.PlaceholderContent.PlaceholderItem
 import com.example.gowerexplorerapp3.databinding.FragmentItemBinding
@@ -30,13 +33,14 @@ class MyItemRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.idView.text = item.title
+        holder.contentView.text = item.title
+        holder.thumbnail.setImageResource(item.img)
     }
 
     override fun getItemCount(): Int = values.size
 
     inner class ViewHolder(binding: FragmentItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        val idView: TextView = binding.itemNumber
+        val thumbnail: ImageView = binding.imageView
         val contentView: TextView = binding.content
 
         override fun toString(): String {
