@@ -66,6 +66,9 @@ class ItemFragment : Fragment() {
         val myDistanceList = arrayOf(
             10.5,5.2,4.2,1.2,5.3,14.1,3.8,2.3
         )
+        val myPointsList = arrayOf(
+            30,20,20,15,15,20,15,10
+        )
 
         for (i in 0..7) {
             val imageModel = PoiModel()
@@ -73,6 +76,7 @@ class ItemFragment : Fragment() {
             imageModel.img = myImageList[i]
             imageModel.description = myDescriptionList[i].toString()
             imageModel.distance = myDistanceList[i]
+            imageModel.poiPoints = myPointsList[i]
             list.add(imageModel)
         }
 

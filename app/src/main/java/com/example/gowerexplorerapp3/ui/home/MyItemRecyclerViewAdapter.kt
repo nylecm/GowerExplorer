@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 
 import com.example.gowerexplorerapp3.databinding.FragmentItemBinding
+import org.w3c.dom.Text
 
 /**
  * [RecyclerView.Adapter] that can display a [PoiModel].
@@ -33,6 +34,7 @@ class MyItemRecyclerViewAdapter(
         holder.thumbnail.setImageResource(item.img)
         holder.distance.text = item.distanceTo()
         holder.poiDescription.text = item.description
+        holder.poiPoints.text = item.poiPoints.toString() + " Points"
     }
 
     override fun getItemCount(): Int = values.size
@@ -42,6 +44,7 @@ class MyItemRecyclerViewAdapter(
         val poiNameView: TextView = binding.poiName
         val distance: TextView = binding.distance
         val poiDescription: TextView = binding.poiDescription
+        val poiPoints: TextView = binding.poiPoints
 
         override fun toString(): String {
             return super.toString() + " '" + poiNameView.text + "'"
