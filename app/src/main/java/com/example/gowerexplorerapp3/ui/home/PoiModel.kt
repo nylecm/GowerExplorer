@@ -1,4 +1,4 @@
-package com.example.gowerexplorerapp3
+package com.example.gowerexplorerapp3.ui.home
 
 class PoiModel {
     var title: String? = null;
