@@ -28,5 +28,10 @@
         android:name="com.example.gowerexplorerapp3.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/itemFragment"
+        android:name="com.example.gowerexplorerapp3.ItemFragment"
+        android:label="fragment_item_list"
+        tools:layout="@layout/fragment_item_list" />
 
 </navigation>
