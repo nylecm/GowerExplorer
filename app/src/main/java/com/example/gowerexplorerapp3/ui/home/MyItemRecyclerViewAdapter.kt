@@ -1,14 +1,11 @@
 package com.example.gowerexplorerapp3.ui.home
 
-import android.media.Image
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.example.gowerexplorerapp3.R
 
-import com.example.gowerexplorerapp3.placeholder.PlaceholderContent.PlaceholderItem
 import com.example.gowerexplorerapp3.databinding.FragmentItemBinding
 
 /**
@@ -28,7 +25,6 @@ class MyItemRecyclerViewAdapter(
                 false
             )
         )
-
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -47,5 +43,4 @@ class MyItemRecyclerViewAdapter(
             return super.toString() + " '" + contentView.text + "'"
         }
     }
-
 }
