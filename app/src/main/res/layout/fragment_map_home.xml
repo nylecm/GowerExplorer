@@ -69,16 +69,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:backgroundTint="@color/pri_200"
-                android:contentDescription="centre"
+                android:contentDescription="@string/centre_map_to_my_location"
                 android:src="@drawable/ic_baseline_my_location_24" />
 
             <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/pri_200"
-                android:contentDescription="centre"
+                android:contentDescription="@string/search_button"
                 app:icon="@drawable/ic_baseline_search_24"
-                android:text="Search" />
+                android:text="@string/search" />
         </LinearLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,7 +37,6 @@ class ItemFragment : Fragment() {
 
         val ui = inflater.inflate(R.layout.fragment_item_list, container, false)
         val view = ui.findViewById<RecyclerView>(R.id.list)
-        Log.i("ddd", view::class.java.typeName)
         // Set the adapter
         if (view is RecyclerView) {
             with(view) {

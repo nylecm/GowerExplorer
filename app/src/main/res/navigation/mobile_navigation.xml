@@ -10,22 +10,19 @@
         android:name="com.example.gowerexplorerapp3.MapHome"
         android:label="@string/title_map_home"
         tools:layout="@layout/fragment_map_home" />
-
-    <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.gowerexplorerapp3.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
-
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.gowerexplorerapp3.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/itemFragment"
         android:name="com.example.gowerexplorerapp3.ui.home.ItemFragment"
         android:label="@string/title_poi_list"
         tools:layout="@layout/fragment_item_list" />
-
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.example.gowerexplorerapp3.ui.dashboard.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.example.gowerexplorerapp3.ui.notifications.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" />
 </navigation>
