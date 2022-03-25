@@ -31,7 +31,7 @@ import com.google.android.material.snackbar.Snackbar
 class MapHome : Fragment() {
 
     private lateinit var mMap: GoogleMap
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    // private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
 
     override fun onCreateView(
@@ -137,8 +137,10 @@ class MapHome : Fragment() {
                     val lastLoc = LatLng(lat, long)
 
                     //update camera
+                    mMap.moveCamera(CameraUpdateFactory.zoomTo(10F))
                     mMap.animateCamera(CameraUpdateFactory.newLatLng(lastLoc))
-                    mMap.animateCamera(CameraUpdateFactory.zoomTo(15F))
+
+                    //mMap.moveCamera(CameraUpdateFactory.newLatLng(lastLoc))
                     mMap.addMarker(MarkerOptions().position(lastLoc)
                         .title("Current Location"))
                 }
