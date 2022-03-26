@@ -12,6 +12,8 @@ import android.view.ViewGroup
 import com.example.gowerexplorerapp3.R
 import com.example.gowerexplorerapp3.placeholder.PlaceholderContent
 import com.google.android.gms.maps.SupportMapFragment
+import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.reflect.typeOf
 
 /**

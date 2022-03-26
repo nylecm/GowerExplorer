@@ -17,6 +17,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat.getSystemService
+import com.example.gowerexplorerapp3.ui.home.PoiModel
 import com.google.android.gms.location.*
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -29,6 +30,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import java.util.*
 
 class MapHome : Fragment() {
 
@@ -145,6 +147,10 @@ class MapHome : Fragment() {
 //        //zoom level from 1--20 as float
 //        mMap.moveCamera(CameraUpdateFactory.zoomTo(18F))
 //    }
+
+    private fun populateMap(pointsOfInterest: Vector<PoiModel>, categories: Vector<PoiModel.PoiType>) {
+        // todo pointsOfInterest = {};
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
