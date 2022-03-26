@@ -26,33 +26,53 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 
 class MapHome : Fragment() {
 
     private lateinit var mMap: GoogleMap
+
     // private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
     private lateinit var recenterLocationButton: FloatingActionButton
+    private lateinit var mapSettingsButton: FloatingActionButton
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(activity as MainActivity)
+        mFusedLocationClient =
+            LocationServices.getFusedLocationProviderClient(activity as MainActivity)
         return inflater.inflate(R.layout.fragment_map_home, container, false)
     }
 
     override fun onStart() {
         super.onStart()
         recenterLocationButton = view?.findViewById(R.id.centerLocationButton)!!
-
         recenterLocationButton.setOnClickListener {
             getLastLocation()
         }
+
+        mapSettingsButton = view?.findViewById(R.id.mapSettings)!!
+        mapSettingsButton.setOnClickListener {
+            val multiItems = arrayOf("Beach", "Nature", "Landmark", "Shop/Pub")
+            val checkedItems = booleanArrayOf(true, true, true, true)
+
+            MaterialAlertDialogBuilder(requireContext())
+                //Multi-choice items (initialized with checked items)
+                .setMultiChoiceItems(multiItems, checkedItems) { dialog, which, checked ->
+                    // Respond to item chosen
+                }
+                .show()
+        }
     }
+
+    val multiItems = arrayOf("Item 1", "Item 2", "Item 3")
+    val checkedItems = booleanArrayOf(true, false, false, false)
+
 
     private val callback = OnMapReadyCallback { googleMap ->
         /**
@@ -68,29 +88,45 @@ class MapHome : Fragment() {
         mMap = googleMap
 
         val rhossili = LatLng(51.57230253453608, -4.291339367942704)
-        googleMap.addMarker(MarkerOptions().position(rhossili).title("Rhossili")
-            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)))
+        googleMap.addMarker(
+            MarkerOptions().position(rhossili).title("Rhossili")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
+        )
         val portEynon = LatLng(51.544325787706306, -4.210278367615245)
-        googleMap.addMarker(MarkerOptions().position(portEynon).title("Port Eynon")
-            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)))
+        googleMap.addMarker(
+            MarkerOptions().position(portEynon).title("Port Eynon")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
+        )
         val whitefordLightHouse = LatLng(51.65308998230439, -4.250174428774476)
-        googleMap.addMarker(MarkerOptions().position(whitefordLightHouse).title("Whiteford Light House")
-            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)))
+        googleMap.addMarker(
+            MarkerOptions().position(whitefordLightHouse).title("Whiteford Light House")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+        )
         val arthursStone = LatLng(51.593617098371, -4.179297132938529)
-        googleMap.addMarker(MarkerOptions().position(arthursStone).title("Arthur's Stone")
-            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)))
+        googleMap.addMarker(
+            MarkerOptions().position(arthursStone).title("Arthur's Stone")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+        )
         val caswell = LatLng(51.57003166974094, -4.031151391066391)
-        googleMap.addMarker(MarkerOptions().position(caswell).title("Caswell")
-            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)))
+        googleMap.addMarker(
+            MarkerOptions().position(caswell).title("Caswell")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
+        )
         val threeCliffs = LatLng(51.57303146866698, -4.1121056531239795)
-        googleMap.addMarker(MarkerOptions().position(threeCliffs).title("Three Cliffs")
-            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)))
+        googleMap.addMarker(
+            MarkerOptions().position(threeCliffs).title("Three Cliffs")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
+        )
         val langlandBay = LatLng(51.567802269570436, -4.012446099161361)
-        googleMap.addMarker(MarkerOptions().position(langlandBay).title("Langland Bay")
-            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)))
+        googleMap.addMarker(
+            MarkerOptions().position(langlandBay).title("Langland Bay")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
+        )
         val oystermouthCastle = LatLng(51.57678604586335, -4.002414253222207)
-        googleMap.addMarker(MarkerOptions().position(oystermouthCastle).title("Oystermouth Castle")
-            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)))
+        googleMap.addMarker(
+            MarkerOptions().position(oystermouthCastle).title("Oystermouth Castle")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+        )
 
 //        mMap.moveCamera(CameraUpdateFactory.zoomTo(10F))
 //        googleMap.moveCamera(CameraUpdateFactory.newLatLng(rhossili))
@@ -151,8 +187,10 @@ class MapHome : Fragment() {
                     mMap.animateCamera(CameraUpdateFactory.newLatLng(lastLoc))
 
                     //mMap.moveCamera(CameraUpdateFactory.newLatLng(lastLoc))
-                    mMap.addMarker(MarkerOptions().position(lastLoc)
-                        .title("Current Location"))
+                    mMap.addMarker(
+                        MarkerOptions().position(lastLoc)
+                            .title("Current Location")
+                    )
                 }
             }
             //couldn't get location, so go to Settings (deprecated??)
@@ -172,7 +210,7 @@ class MapHome : Fragment() {
             interval = 100
             fastestInterval = 50
             priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-            maxWaitTime= 100
+            maxWaitTime = 100
         }
 
         // checking location permission
@@ -190,7 +228,8 @@ class MapHome : Fragment() {
         }
         //update the location client
 
-        mFusedLocationClient = LocationServices.getFusedLocationProviderClient((activity as MainActivity))
+        mFusedLocationClient =
+            LocationServices.getFusedLocationProviderClient((activity as MainActivity))
         //add a callback so that location is repeatedly updated according to parameters
         mFusedLocationClient.requestLocationUpdates(
             mLocationRequest, mLocationCallback,
