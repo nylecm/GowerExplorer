@@ -96,6 +96,7 @@ class ItemFragment : Fragment() {
 //            list.add(imageModel)
 //        }
 
+        PoiController.loadData(requireContext())
         list.add(PoiController.pois.get(0))
 
         //list.sortBy { list -> list.distance }
