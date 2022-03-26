@@ -26,6 +26,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 
 class MapHome : Fragment() {
@@ -33,6 +34,7 @@ class MapHome : Fragment() {
     private lateinit var mMap: GoogleMap
     // private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
+    private lateinit var recenterLocationButton: FloatingActionButton
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,8 +42,16 @@ class MapHome : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(activity as MainActivity)
-
         return inflater.inflate(R.layout.fragment_map_home, container, false)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        recenterLocationButton = view?.findViewById(R.id.centerLocationButton)!!
+
+        recenterLocationButton.setOnClickListener {
+            getLastLocation()
+        }
     }
 
     private val callback = OnMapReadyCallback { googleMap ->

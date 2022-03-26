@@ -65,6 +65,7 @@
                 android:layout_weight="1" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/centerLocationButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
