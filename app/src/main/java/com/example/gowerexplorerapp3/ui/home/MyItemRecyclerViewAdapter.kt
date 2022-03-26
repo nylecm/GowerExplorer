@@ -38,7 +38,7 @@ class MyItemRecyclerViewAdapter(
         val item = values[position]
         holder.poiNameView.text = item.title
         holder.thumbnail.setImageResource(item.img)
-        holder.distance.text = item.distanceTo() + " | " + item.poiPoints.toString() + " Points"
+        holder.distance.text = item.distanceTo().toString() + " | " + item.poiPoints.toString() + " Points"
         holder.poiDescription.text = item.description
 
         if (item.isPoiExplored) {

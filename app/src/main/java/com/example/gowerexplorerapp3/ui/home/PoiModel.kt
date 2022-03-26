@@ -4,38 +4,35 @@ import android.location.Location
 import java.util.*
 
 class PoiModel {
-    var title: String? = null
-    var description: String? = null
-    var longitude: Double = 0.0
+    lateinit var title: String
+    lateinit var description: String
     var latitude: Double = 0.0
+    var longitude: Double = 0.0
     lateinit var poiType: Array<PoiType>
     var subPois: Array<String>? = null
     var poiPoints: Int = 0
     var img: Int = 0;
-    var distance: Double =
-        0.0; // todo replace with location and then use distanceTo to calculate the distance.
     var isPoiExplored = false
 
-    constructor() {
-
-    }
+//    constructor() {
+//
+//    }
 
     constructor(
-        title: String?,
-        description: String?,
-        longitude: Double,
+        title: String,
+        description: String,
         latitude: Double,
+        longitude: Double,
         poiType: Array<PoiType>,
-        subPois: Array<String>,
+        subPois: Array<String>?,
         poiPoints: Int,
         img: Int,
-        distance: Double,
         isPoiExplored: Boolean
     ) {
         this.title = title
         this.description = description
-        this.longitude = longitude
         this.latitude = latitude
+        this.longitude = longitude
 
         if (!poiType.isEmpty()) {
             this.poiType = poiType
@@ -46,7 +43,6 @@ class PoiModel {
         this.subPois = subPois
         this.poiPoints = poiPoints
         this.img = img
-        this.distance = distance
         this.isPoiExplored = isPoiExplored
     }
 
@@ -59,7 +55,7 @@ class PoiModel {
     }
 
 
-    fun distanceTo(): String {
-        return distance.toString() + "mi" // todo replace with distance unit
+    fun distanceTo(): Double {
+        return 420.0;
     }
 }
