@@ -49,5 +49,77 @@ object PoiController {
                 true
             )
         )
+        pois.add(
+            PoiModel(
+                "Arthur's Stone",
+                context.resources.getString(R.string.desc_arthurs_stone),
+                51.593617098371, -4.179297132938529,
+                PoiModel.PoiType.LANDMARK,
+                null,
+                15,
+                R.drawable.arthurs_stone,
+                true
+            )
+        )
+        pois.add(
+            PoiModel(
+                "Caswell",
+                context.resources.getString(R.string.desc_caswell),
+                51.57003166974094, -4.031151391066391,
+                PoiModel.PoiType.BEACH,
+                null,
+                15,
+                R.drawable.caswell,
+                true
+            )
+        )
+        pois.add(
+            PoiModel(
+                "Three Cliffs",
+                context.resources.getString(R.string.desc_three_cliffs),
+                51.57303146866698, -4.1121056531239795,
+                PoiModel.PoiType.BEACH,
+                null,
+                20,
+                R.drawable.three_cliffs,
+                true
+            )
+        )
+        pois.add(
+            PoiModel(
+                "Langland Bay",
+                context.resources.getString(R.string.desc_langland),
+                51.567802269570436, -4.012446099161361,
+                PoiModel.PoiType.BEACH,
+                null,
+                15,
+                R.drawable.caswell,
+                true
+            )
+        )
+        pois.add(
+            PoiModel(
+                "Oystermouth Castle",
+                context.resources.getString(R.string.desc_oystermouth_castle),
+                51.57678604586335, -4.002414253222207,
+                PoiModel.PoiType.LANDMARK,
+                null,
+                20,
+                R.drawable.three_cliffs,
+                true
+            )
+        )
+        pois.add(
+            PoiModel(
+                "Gower Inn",
+                context.resources.getString(R.string.desc_gower_inn),
+                51.582538374589376, -4.091597043192082,
+                PoiModel.PoiType.COMMERCE,
+                null,
+                5,
+                R.drawable.gower_inn,
+                false
+            )
+        )
     }
 }

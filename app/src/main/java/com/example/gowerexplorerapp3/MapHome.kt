@@ -25,6 +25,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
@@ -89,62 +90,18 @@ class MapHome : Fragment() {
          */
         // Add a marker in Sydney and move the camera
         mMap = googleMap
-
-        PoiController.loadData(requireContext()) // TODO load once only
-
-        for (poi in PoiController.pois) {
-            googleMap.addMarker(
-                MarkerOptions().position(LatLng(poi.latitude, poi.longitude)).title(poi.title)
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
-            )
-        }
-
-//        val rhossili = LatLng(51.57230253453608, -4.291339367942704)
-//        googleMap.addMarker(
-//            MarkerOptions().position(rhossili).title("Rhossili")
-//                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
-//        )
-//        val portEynon = LatLng(51.544325787706306, -4.210278367615245)
-//        googleMap.addMarker(
-//            MarkerOptions().position(portEynon).title("Port Eynon")
-//                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
-//        )
-//        val whitefordLightHouse = LatLng(51.65308998230439, -4.250174428774476)
-//        googleMap.addMarker(
-//            MarkerOptions().position(whitefordLightHouse).title("Whiteford Light House")
-//                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
-//        )
-//        val arthursStone = LatLng(51.593617098371, -4.179297132938529)
-//        googleMap.addMarker(
-//            MarkerOptions().position(arthursStone).title("Arthur's Stone")
-//                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
-//        )
-//        val caswell = LatLng(51.57003166974094, -4.031151391066391)
-//        googleMap.addMarker(
-//            MarkerOptions().position(caswell).title("Caswell")
-//                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
-//        )
-//        val threeCliffs = LatLng(51.57303146866698, -4.1121056531239795)
-//        googleMap.addMarker(
-//            MarkerOptions().position(threeCliffs).title("Three Cliffs")
-//                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
-//        )
-//        val langlandBay = LatLng(51.567802269570436, -4.012446099161361)
-//        googleMap.addMarker(
-//            MarkerOptions().position(langlandBay).title("Langland Bay")
-//                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
-//        )
-//        val oystermouthCastle = LatLng(51.57678604586335, -4.002414253222207)
-//        googleMap.addMarker(
-//            MarkerOptions().position(oystermouthCastle).title("Oystermouth Castle")
-//                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
-//        )
-
-//        mMap.moveCamera(CameraUpdateFactory.zoomTo(10F))
-//        googleMap.moveCamera(CameraUpdateFactory.newLatLng(rhossili))
+        populateMap()
         getLastLocation()
+    }
 
-        //toCoFo()
+    private fun colourCodeMarker(poiType: PoiModel.PoiType): Float {
+        return when (poiType) {
+            PoiModel.PoiType.BEACH -> BitmapDescriptorFactory.HUE_YELLOW
+            PoiModel.PoiType.NATURE -> BitmapDescriptorFactory.HUE_GREEN
+            PoiModel.PoiType.COMMERCE -> BitmapDescriptorFactory.HUE_ROSE
+            PoiModel.PoiType.LANDMARK -> BitmapDescriptorFactory.HUE_AZURE
+            else -> BitmapDescriptorFactory.HUE_RED
+        }
     }
 
 //    private fun toCoFo() {
@@ -158,11 +115,15 @@ class MapHome : Fragment() {
 //        mMap.moveCamera(CameraUpdateFactory.zoomTo(18F))
 //    }
 
-    private fun populateMap(
-        pointsOfInterest: Vector<PoiModel>,
-        categories: Vector<PoiModel.PoiType>
-    ) {
-        // todo pointsOfInterest = {};
+    private fun populateMap() {
+        PoiController.loadData(requireContext()) // TODO load once only
+
+        for (poi in PoiController.pois) {
+            mMap.addMarker(
+                MarkerOptions().position(LatLng(poi.latitude, poi.longitude)).title(poi.title)
+                    .icon(BitmapDescriptorFactory.defaultMarker(colourCodeMarker(poi.poiType)))
+            )
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
