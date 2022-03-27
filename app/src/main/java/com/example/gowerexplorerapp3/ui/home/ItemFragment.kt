@@ -97,8 +97,10 @@ class ItemFragment : Fragment() {
 //        }
 
         PoiController.loadData(requireContext())
-        list.add(PoiController.pois.get(0))
 
+        for (poi in PoiController.pois) {
+            list.add(poi)
+        }
         //list.sortBy { list -> list.distance }
         return list
     }

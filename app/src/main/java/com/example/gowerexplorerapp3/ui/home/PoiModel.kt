@@ -8,7 +8,7 @@ class PoiModel {
     lateinit var description: String
     var latitude: Double = 0.0
     var longitude: Double = 0.0
-    lateinit var poiType: Array<PoiType>
+    lateinit var poiType: PoiType
     var subPois: Array<String>? = null
     var poiPoints: Int = 0
     var img: Int = 0;
@@ -23,7 +23,7 @@ class PoiModel {
         description: String,
         latitude: Double,
         longitude: Double,
-        poiType: Array<PoiType>,
+        poiType: PoiType,
         subPois: Array<String>?,
         poiPoints: Int,
         img: Int,
@@ -34,10 +34,10 @@ class PoiModel {
         this.latitude = latitude
         this.longitude = longitude
 
-        if (!poiType.isEmpty()) {
+        if (poiType.equals("")) {
             this.poiType = poiType
         } else {
-            this.poiType = arrayOf(PoiType.MISC)
+            this.poiType = PoiType.MISC
         }
         this.poiType = poiType
         this.subPois = subPois
