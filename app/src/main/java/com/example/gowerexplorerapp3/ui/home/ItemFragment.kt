@@ -96,7 +96,7 @@ class ItemFragment : Fragment() {
 //            list.add(imageModel)
 //        }
 
-        PoiController.loadData(requireContext())
+        PoiController.loadData(requireContext()) // TODO load data when main activity stats up instead
 
         for (poi in PoiController.pois) {
             list.add(poi)

@@ -8,7 +8,7 @@ object PoiController {
     var pois: Vector<PoiModel> = Vector()
 
     init {
-        // TODO database
+        // TODO database connection
     }
 
     fun loadData(context: Context) {
