@@ -1,19 +1,13 @@
 package com.example.gowerexplorerapp3.ui.home
 
-import android.annotation.SuppressLint
-import android.content.res.Resources
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.ResourceCursorTreeAdapter
 import android.widget.TextView
-import androidx.core.content.res.ResourcesCompat.getColor
-import androidx.core.view.marginTop
-import com.example.gowerexplorerapp3.R
 
 import com.example.gowerexplorerapp3.databinding.FragmentItemBinding
-import org.w3c.dom.Text
+import com.example.gowerexplorerapp3.model.PoiModel
 
 /**
  * [RecyclerView.Adapter] that can display a [PoiModel].

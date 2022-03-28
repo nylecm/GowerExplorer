@@ -16,7 +16,7 @@
             android:value="AIzaSyAIq4O1XBohsITxczqHpmba4nffp6gZ2pY" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.home.MainActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>

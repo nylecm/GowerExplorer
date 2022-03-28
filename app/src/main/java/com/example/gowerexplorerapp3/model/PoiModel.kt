@@ -1,7 +1,4 @@
-package com.example.gowerexplorerapp3.ui.home
-
-import android.location.Location
-import java.util.*
+package com.example.gowerexplorerapp3.model
 
 class PoiModel {
     lateinit var title: String

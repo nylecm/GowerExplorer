@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.gowerexplorerapp3.databinding.FragmentDashboardBinding
+import com.example.gowerexplorerapp3.model.DashboardViewModel
 
 class DashboardFragment : Fragment() {
 

@@ -1,7 +1,8 @@
-package com.example.gowerexplorerapp3.ui.home
+package com.example.gowerexplorerapp3.controller
 
 import android.content.Context
 import com.example.gowerexplorerapp3.R
+import com.example.gowerexplorerapp3.model.PoiModel
 import java.util.*
 
 object PoiController {

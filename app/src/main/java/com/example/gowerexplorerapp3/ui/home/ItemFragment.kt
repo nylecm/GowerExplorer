@@ -9,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.gowerexplorerapp3.R
+import com.example.gowerexplorerapp3.controller.PoiController
+import com.example.gowerexplorerapp3.model.PoiModel
 import kotlin.collections.ArrayList
 
 /**
