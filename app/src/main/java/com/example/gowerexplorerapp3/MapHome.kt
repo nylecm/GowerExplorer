@@ -2,6 +2,7 @@ package com.example.gowerexplorerapp3
 
 import android.Manifest
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
@@ -15,6 +16,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat.getSystemService
 import com.example.gowerexplorerapp3.ui.home.PoiController
@@ -37,8 +39,6 @@ import java.util.*
 class MapHome : Fragment() {
 
     private lateinit var mMap: GoogleMap
-
-    // private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
     private lateinit var recenterLocationButton: FloatingActionButton
     private lateinit var mapSettingsButton: FloatingActionButton
@@ -70,13 +70,13 @@ class MapHome : Fragment() {
                 .setMultiChoiceItems(multiItems, checkedItems) { dialog, which, checked ->
                     // Respond to item chosen
                 }
+                .setPositiveButton(android.R.string.yes) { dialog, which ->
+                    Toast.makeText(requireContext(),
+                        android.R.string.yes, Toast.LENGTH_SHORT).show()
+                }
                 .show()
         }
     }
-
-    val multiItems = arrayOf("Item 1", "Item 2", "Item 3")
-    val checkedItems = booleanArrayOf(true, false, false, false)
-
 
     private val callback = OnMapReadyCallback { googleMap ->
         /**
@@ -103,17 +103,6 @@ class MapHome : Fragment() {
             else -> BitmapDescriptorFactory.HUE_RED
         }
     }
-
-//    private fun toCoFo() {
-//        //co-ordinates for CoFo (pull out of Google Maps URL or right click the point)
-//        val coFo = LatLng(51.61921664227731, -3.8786439498970613)
-//        mMap.addMarker(MarkerOptions().position(coFo)
-//            .title("Computational Foundry"))
-//        //map appears as though under a `camera'
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(coFo))
-//        //zoom level from 1--20 as float
-//        mMap.moveCamera(CameraUpdateFactory.zoomTo(18F))
-//    }
 
     private fun populateMap() {
         PoiController.loadData(requireContext()) // TODO load once only
@@ -192,7 +181,6 @@ class MapHome : Fragment() {
             priority = LocationRequest.PRIORITY_HIGH_ACCURACY
             maxWaitTime = 100
         }
-
         // checking location permission
         if (ActivityCompat.checkSelfPermission(
                 activity as MainActivity,
@@ -207,7 +195,6 @@ class MapHome : Fragment() {
             return
         }
         //update the location client
-
         mFusedLocationClient =
             LocationServices.getFusedLocationProviderClient((activity as MainActivity))
         //add a callback so that location is repeatedly updated according to parameters
