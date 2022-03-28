@@ -70,12 +70,44 @@ class MapHome : Fragment() {
                 .setMultiChoiceItems(multiItems, checkedItems) { dialog, which, checked ->
                     // Respond to item chosen
                 }
-                .setPositiveButton(android.R.string.yes) { dialog, which ->
-                    Toast.makeText(requireContext(),
-                        android.R.string.yes, Toast.LENGTH_SHORT).show()
+                .setPositiveButton("Filter") { dialog, which ->
+                    mMap.clear() // TODO is this efficient
+                    if (checkedItems[0])
+                        populateMapWithCategory(PoiModel.PoiType.BEACH)
+                    if (checkedItems[1])
+                        populateMapWithCategory(PoiModel.PoiType.NATURE)
+                    if (checkedItems[2])
+                        populateMapWithCategory(PoiModel.PoiType.LANDMARK)
+                    if (checkedItems[3])
+                        populateMapWithCategory(PoiModel.PoiType.COMMERCE)
+                    // todo handle misc....
+
+                    // Toast.makeText(requireContext(),
+                    //     android.R.string.yes, Toast.LENGTH_SHORT).show()
+                }
+                .setNegativeButton("Cancel") { dialog, which ->
+
+
+                    // Toast.makeText(requireContext(),
+                    //     android.R.string.yes, Toast.LENGTH_SHORT).show()
                 }
                 .show()
         }
+    }
+
+    // TODO better if it would be looping once with a list of desired types.
+    private fun populateMapWithCategory(desiredPoiType: PoiModel.PoiType) {
+        PoiController.loadData(requireContext()) // TODO load once only
+
+        for (poi in PoiController.pois) {
+            if (poi.poiType == desiredPoiType) {
+                mMap.addMarker(
+                    MarkerOptions().position(LatLng(poi.latitude, poi.longitude)).title(poi.title)
+                        .icon(BitmapDescriptorFactory.defaultMarker(colourCodeMarker(poi.poiType)))
+                )
+            }
+        }
+
     }
 
     private val callback = OnMapReadyCallback { googleMap ->
