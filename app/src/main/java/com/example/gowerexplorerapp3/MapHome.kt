@@ -42,6 +42,7 @@ class MapHome : Fragment() {
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
     private lateinit var recenterLocationButton: FloatingActionButton
     private lateinit var mapSettingsButton: FloatingActionButton
+    private var checkedItems = booleanArrayOf(true, true, true, true)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -63,7 +64,6 @@ class MapHome : Fragment() {
         mapSettingsButton = view?.findViewById(R.id.mapSettings)!!
         mapSettingsButton.setOnClickListener {
             val multiItems = arrayOf("Beach", "Nature", "Landmark", "Shop/Pub")
-            val checkedItems = booleanArrayOf(true, true, true, true)
 
             MaterialAlertDialogBuilder(requireContext())
                 //Multi-choice items (initialized with checked items)
