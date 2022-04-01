@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.gowerexplorerapp3.databinding.FragmentNotificationsBinding
 
-class NotificationsFragment : Fragment() {
+class ProfileFragment : Fragment() {
 
     private var _binding: FragmentNotificationsBinding? = null
 
@@ -28,10 +28,10 @@ class NotificationsFragment : Fragment() {
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+        //val textView: TextView = binding.textNotifications
+        //notificationsViewModel.text.observe(viewLifecycleOwner) {
+        //    textView.text = it
+        //}
         return root
     }
 
