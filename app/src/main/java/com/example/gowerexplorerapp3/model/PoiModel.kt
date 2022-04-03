@@ -1,13 +1,12 @@
 package com.example.gowerexplorerapp3.model
 
-class PoiModel {
-    lateinit var title: String
-    lateinit var description: String
-    var latitude: Double = 0.0
-    var longitude: Double = 0.0
-    lateinit var poiType: PoiType
+import com.google.firebase.firestore.GeoPoint
 
-    //var subPois: Array<String>? = null
+class PoiModel {
+    var title: String
+    var description: String
+    var location: GeoPoint
+    var poiType: PoiType
     var poiPoints: Int = 0
     var img: Int = 0;
     //var isPoiExplored = false
@@ -19,17 +18,14 @@ class PoiModel {
     constructor(
         title: String,
         description: String,
-        latitude: Double,
-        longitude: Double,
+        location: GeoPoint,
         poiType: PoiType,
         poiPoints: Int,
         img: Int,
     ) {
         this.title = title
         this.description = description
-        this.latitude = latitude
-        this.longitude = longitude
-
+        this.location = location
         if (poiType.equals("")) {
             this.poiType = poiType
         } else {
@@ -40,6 +36,30 @@ class PoiModel {
         this.img = img
     }
 
+    // TODO remove lagacy constructor once Firebase integration is complete
+    constructor(
+        title: String,
+        description: String,
+        latitude: Double,
+        longitude: Double,
+        poiType: PoiType,
+        poiPoints: Int,
+        img: Int,
+    ) {
+        this.title = title
+        this.description = description
+        this.location = GeoPoint(latitude, longitude)
+        if (poiType.equals("")) {
+            this.poiType = poiType
+        } else {
+            this.poiType = PoiType.MISC
+        }
+        this.poiType = poiType
+        this.poiPoints = poiPoints
+        this.img = img
+    }
+
+
     enum class PoiType {
         BEACH,
         NATURE,
@@ -47,7 +67,6 @@ class PoiModel {
         COMMERCE,
         MISC
     }
-
 
     fun distanceTo(): Double {
         // TODO not yet implemented

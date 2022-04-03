@@ -94,7 +94,7 @@ class MapHome : Fragment() {
         for (poi in PoiController.pois) {
             if (poi.poiType == desiredPoiType) {
                 mMap.addMarker(
-                    MarkerOptions().position(LatLng(poi.latitude, poi.longitude)).title(poi.title)
+                    MarkerOptions().position(LatLng(poi.location.latitude, poi.location.longitude)).title(poi.title)
                         .icon(BitmapDescriptorFactory.defaultMarker(colourCodeMarker(poi.poiType)))
                 )
             }
@@ -133,7 +133,7 @@ class MapHome : Fragment() {
 
         for (poi in PoiController.pois) {
             mMap.addMarker(
-                MarkerOptions().position(LatLng(poi.latitude, poi.longitude)).title(poi.title)
+                MarkerOptions().position(LatLng(poi.location.latitude, poi.location.longitude)).title(poi.title)
                     .icon(BitmapDescriptorFactory.defaultMarker(colourCodeMarker(poi.poiType)))
             )
         }
