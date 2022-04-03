@@ -1,15 +1,35 @@
 package com.example.gowerexplorerapp3.controller
 
 import android.content.Context
+import android.util.Log
 import com.example.gowerexplorerapp3.R
 import com.example.gowerexplorerapp3.model.PoiModel
+import com.google.firebase.firestore.Source
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import java.util.*
 
 object PoiController {
     var pois: Vector<PoiModel> = Vector()
 
     init {
-        // TODO database connection
+        val db = Firebase.firestore
+
+        val docRef = db.collection("poi").document("yLuOXkkwn6WFpuawXgDS")
+
+// Source can be CACHE, SERVER, or DEFAULT.
+        val source = Source.SERVER
+
+// Get the document, forcing the SDK to use the offline cache
+        docRef.get(source).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                // Document found in the offline cache
+                val document = task.result
+                Log.d("POI CONT", "Cached document data: ${document?.data}")
+            } else {
+                Log.d("POI CONT", "Cached get failed: ", task.exception)
+            }
+        }
     }
 
     fun loadData(context: Context) {
