@@ -47,56 +47,6 @@ class ItemFragment : Fragment() {
 
     private fun populate(): ArrayList<PoiModel> {
         val list = ArrayList<PoiModel>()
-//        val myImageList = arrayOf(
-//            R.drawable.whiteford_lighthouse, R.drawable.port_eynon,
-//            R.drawable.rhossili, R.drawable.arthurs_stone, R.drawable.caswell,
-//            R.drawable.three_cliffs, R.drawable.langland, R.drawable.oystermouth_castle
-//        )
-//        val myTitleList = arrayOf(
-//            "Whiteford Lighthouse", "Port Eynon Bay", "Rhossili Bay", "Arthur's Stone",
-//            "Caswell", "Three Cliffs", "Langland Bay", "Oystermouth Castle"
-//        )
-//        val myDescriptionList = arrayOf(
-//            getText(R.string.desc_whiteford_lighthouse),
-//            getText(R.string.desc_port_eynon),
-//            getText(R.string.desc_rhossili),
-//            getText(R.string.desc_arthurs_stone),
-//            getText(R.string.desc_caswell),
-//            getText(R.string.desc_three_cliffs),
-//            getText(R.string.desc_langland),
-//            getText(R.string.desc_oystermouth_castle)
-//        )
-//        val myDistanceList = arrayOf(
-//            10.5, 5.2, 8.5, 1.2, 5.3, 14.1, 3.8, 2.3
-//        )
-//        val myPointsList = arrayOf(
-//            30, 20, 20, 15, 15, 20, 15, 10
-//        )
-//        val myExploredList = arrayOf(
-//            true, false, true, false, true, false, true, false
-//        )
-//        val mySubPointList = arrayOf(
-//            arrayOf("Northernmost Point"),
-//            arrayOf("Southernmost Point"),
-//            arrayOf("Worm's Head", "Shipwreck", "Coastguard's House"),
-//            null,
-//            null,
-//            null,
-//            null,
-//            null
-//        )
-//
-//        for (i in 0..7) {
-//            val imageModel = PoiModel()
-//            imageModel.title = myTitleList[i]
-//            imageModel.img = myImageList[i]
-//            imageModel.description = myDescriptionList[i].toString()
-//            imageModel.distance = myDistanceList[i]
-//            imageModel.poiPoints = myPointsList[i]
-//            imageModel.isPoiExplored = myExploredList[i]
-//            imageModel.subPois = mySubPointList[i]
-//            list.add(imageModel)
-//        }
 
         PoiController.loadData(requireContext()) // TODO load data when main activity stats up instead
 

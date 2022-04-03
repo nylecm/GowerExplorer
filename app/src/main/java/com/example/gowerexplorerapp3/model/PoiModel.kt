@@ -6,10 +6,11 @@ class PoiModel {
     var latitude: Double = 0.0
     var longitude: Double = 0.0
     lateinit var poiType: PoiType
-    var subPois: Array<String>? = null
+
+    //var subPois: Array<String>? = null
     var poiPoints: Int = 0
     var img: Int = 0;
-    var isPoiExplored = false
+    //var isPoiExplored = false
 
 //    constructor() {
 //
@@ -21,10 +22,8 @@ class PoiModel {
         latitude: Double,
         longitude: Double,
         poiType: PoiType,
-        subPois: Array<String>?,
         poiPoints: Int,
         img: Int,
-        isPoiExplored: Boolean
     ) {
         this.title = title
         this.description = description
@@ -37,10 +36,8 @@ class PoiModel {
             this.poiType = PoiType.MISC
         }
         this.poiType = poiType
-        this.subPois = subPois
         this.poiPoints = poiPoints
         this.img = img
-        this.isPoiExplored = isPoiExplored
     }
 
     enum class PoiType {
@@ -53,6 +50,7 @@ class PoiModel {
 
 
     fun distanceTo(): Double {
+        // TODO not yet implemented
         return 420.0;
     }
 }

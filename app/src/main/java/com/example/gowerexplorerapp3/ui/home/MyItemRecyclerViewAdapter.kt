@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.gowerexplorerapp3.R
 
 import com.example.gowerexplorerapp3.databinding.FragmentItemBinding
 import com.example.gowerexplorerapp3.model.PoiModel
@@ -34,27 +35,11 @@ class MyItemRecyclerViewAdapter(
         holder.thumbnail.setImageResource(item.img)
         holder.distance.text = item.distanceTo().toString() + " | " + item.poiPoints.toString() + " Points"
         holder.poiDescription.text = item.description
+        holder.poiIsExplored.text = "Unexplored"
 
-        if (item.isPoiExplored) {
-            holder.poiIsExplored.text = "Explored"
-        }
-        // todo Does Kotlin do ternaries
-
-        if (item.subPois != null) {
-            var subPointsString = "Sub-PoIs: "
-            for (i in item.subPois!!.indices) {
-                subPointsString += item.subPois!![i]
-                if (i < item.subPois!!.size - 2)
-                    subPointsString += ", "
-                else if (i == item.subPois!!.size - 2)
-                    subPointsString += ", and "
-                else
-                    subPointsString += "."
-            }
-            holder.poiSubPoints.maxLines = 10
-            holder.poiSubPoints.setPadding(0,8,0,0)
-            holder.poiSubPoints.text = subPointsString
-        }
+//        if (item.isPoiExplored) { TODO new way of checking if it is explored
+//            holder.poiIsExplored.text = "Explored"
+//        }
     }
 
     override fun getItemCount(): Int = values.size
