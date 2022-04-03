@@ -1,15 +1,18 @@
 package com.example.gowerexplorerapp3.model
 
+import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.*
 
 class UserModel {
-    lateinit var email: String
-    var numberOfPoints: Int = 0
+    //lateinit var email: String
+    var points: Int = 0
     var poisExplored: Vector<String> = Vector()
-    private val db = Firebase.firestore
+    //private val db = Firebase.firestore
 
     /**
      * User model constructor that can construct an arbitrary user based of set params.
@@ -22,15 +25,13 @@ class UserModel {
      * User model constructor that can constrct a
      */
     constructor(mAuth: FirebaseAuth) {
-        email = mAuth.currentUser?.email.toString()
-        val uid = mAuth.uid
+        //email = mAuth.currentUser?.email.toString()
+        val uid = mAuth.currentUser?.uid
 
-        val user = hashMapOf(
-            "first" to "Ada",
-            "last" to "Lovelace",
-            "born" to 1815
-        )
-
-        db.collection("users").add(user)
+        var db = FirebaseFirestore.getInstance()
+        db.collection("users")
+            .document(uid!!)
+            .set(this)
     }
 }
+

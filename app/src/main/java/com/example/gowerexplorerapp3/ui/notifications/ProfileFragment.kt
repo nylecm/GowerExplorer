@@ -62,11 +62,9 @@ class ProfileFragment : Fragment() {
         loginButton.setOnClickListener {
             loginClick()
         }
-
         registerButton.setOnClickListener {
             registerClick()
         }
-
         update()
     }
 
@@ -92,7 +90,7 @@ class ProfileFragment : Fragment() {
             if (task.isSuccessful) {
                 // TODO...
                 val firebaseUser: FirebaseUser = task.result.user!!
-
+                update()
                 val user = UserModel(mAuth)
 
             } else {
