@@ -1,6 +1,7 @@
 package com.example.gowerexplorerapp3.model
 
 import com.google.firebase.firestore.GeoPoint
+import java.sql.Types
 
 class PoiModel {
     var title: String
@@ -60,12 +61,16 @@ class PoiModel {
     }
 
 
-    enum class PoiType {
-        BEACH,
-        NATURE,
-        LANDMARK,
-        COMMERCE,
-        MISC
+    enum class PoiType(val value: Int) {
+        BEACH(0),
+        NATURE(1),
+        LANDMARK(2),
+        COMMERCE(3),
+        MISC(4);
+
+        companion object {
+            fun fromInt(value: Int) = values().first { it.value == value }
+        }
     }
 
     fun distanceTo(): Double {

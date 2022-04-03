@@ -8,6 +8,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.gowerexplorerapp3.R
+import com.example.gowerexplorerapp3.controller.PoiController
 import com.example.gowerexplorerapp3.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -16,6 +17,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        PoiController // initialises poi data
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

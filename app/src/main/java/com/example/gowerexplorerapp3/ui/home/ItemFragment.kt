@@ -48,8 +48,6 @@ class ItemFragment : Fragment() {
     private fun populate(): ArrayList<PoiModel> {
         val list = ArrayList<PoiModel>()
 
-        PoiController.loadData(requireContext()) // TODO load data when main activity stats up instead
-
         for (poi in PoiController.pois) {
             list.add(poi)
         }
