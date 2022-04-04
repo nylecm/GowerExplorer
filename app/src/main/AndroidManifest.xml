@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GowerExplorerApp3">
         <activity
-            android:name=".PoiView"
+            android:name=".ui.poiview.PoiView"
             android:exported="false"
             android:label="@string/title_activity_poi_view"
             android:theme="@style/Theme.GowerExplorerApp3.NoActionBar" />

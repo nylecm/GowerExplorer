@@ -1,12 +1,13 @@
-package com.example.gowerexplorerapp3
+package com.example.gowerexplorerapp3.ui.poiview
 
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
-import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
+import com.example.gowerexplorerapp3.R
 import com.example.gowerexplorerapp3.databinding.ActivityPoiViewBinding
+import com.squareup.picasso.Picasso
 
 class PoiView : AppCompatActivity() {
 
@@ -25,6 +26,15 @@ class PoiView : AppCompatActivity() {
                 .setAction("Action", null).show()
         }
 
-        findViewById<TextView>(R.id.textview).text = intent.getStringExtra("title")
+        binding.toolbarLayout.title = intent.getStringExtra("title")
+
+        Picasso.get()
+            .load(intent.getStringExtra("imgUrl"))
+            .resize(1080, 600)
+            .centerCrop()
+            .into(findViewById<ImageView>(R.id.mainImage));
+
+        findViewById<TextView>(R.id.textview).text = intent.getStringExtra("description")
+
     }
 }

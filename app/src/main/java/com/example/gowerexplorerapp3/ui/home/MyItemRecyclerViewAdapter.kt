@@ -1,13 +1,12 @@
 package com.example.gowerexplorerapp3.ui.home
 
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.gowerexplorerapp3.PoiView
+import com.example.gowerexplorerapp3.ui.poiview.PoiView
 import com.example.gowerexplorerapp3.databinding.FragmentItemBinding
 import com.example.gowerexplorerapp3.model.PoiModel
 import com.squareup.picasso.Picasso
@@ -15,7 +14,6 @@ import com.squareup.picasso.Picasso
 
 /**
  * [RecyclerView.Adapter] that can display a [PoiModel].
- * TODO: Replace the implementation with code for your data type.
  */
 class MyItemRecyclerViewAdapter(
     private val values: List<PoiModel>
@@ -50,13 +48,10 @@ class MyItemRecyclerViewAdapter(
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.getContext(), PoiView::class.java)
             intent.putExtra("title", item.title)
+            intent.putExtra("description", item.description)
+            intent.putExtra("imgUrl", item.imgUrl)
             holder.itemView.context.startActivity(intent)
-
         }
-
-//        if (item.isPoiExplored) { TODO new way of checking if it is explored
-//            holder.poiIsExplored.text = "Explored"
-//        }
     }
 
     override fun getItemCount(): Int = values.size
@@ -67,7 +62,6 @@ class MyItemRecyclerViewAdapter(
         val distance: TextView = binding.distance
         val poiDescription: TextView = binding.poiDescription
         val poiIsExplored: TextView = binding.poiIsExplored
-        val poiSubPoints: TextView = binding.subPois
 
         override fun toString(): String {
             return super.toString() + " '" + poiNameView.text + "'"

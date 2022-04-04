@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.gowerexplorerapp3.PoiView">
+    tools:context="com.example.gowerexplorerapp3.ui.poiview.PoiView">
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
