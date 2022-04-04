@@ -1,15 +1,17 @@
 package com.example.gowerexplorerapp3.ui.home
 
-import androidx.recyclerview.widget.RecyclerView
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.example.gowerexplorerapp3.R
-
+import androidx.recyclerview.widget.RecyclerView
+import com.example.gowerexplorerapp3.PoiView
 import com.example.gowerexplorerapp3.databinding.FragmentItemBinding
 import com.example.gowerexplorerapp3.model.PoiModel
 import com.squareup.picasso.Picasso
+
 
 /**
  * [RecyclerView.Adapter] that can display a [PoiModel].
@@ -44,6 +46,13 @@ class MyItemRecyclerViewAdapter(
             item.distanceTo().toString() + " | " + item.poiPoints.toString() + " Points"
         holder.poiDescription.text = item.description
         holder.poiIsExplored.text = "Unexplored"
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.getContext(), PoiView::class.java)
+            intent.putExtra("title", item.title)
+            holder.itemView.context.startActivity(intent)
+
+        }
 
 //        if (item.isPoiExplored) { TODO new way of checking if it is explored
 //            holder.poiIsExplored.text = "Explored"
