@@ -89,12 +89,13 @@ class MapHome : Fragment() {
 
     // TODO better if it would be looping once with a list of desired types.
     private fun populateMapWithCategory(desiredPoiType: PoiModel.PoiType) {
-        PoiController.loadData(requireContext()) // TODO load once only
+        //PoiController.loadData(requireContext()) // TODO load once only
 
         for (poi in PoiController.pois) {
             if (poi.poiType == desiredPoiType) {
                 mMap.addMarker(
-                    MarkerOptions().position(LatLng(poi.location.latitude, poi.location.longitude)).title(poi.title)
+                    MarkerOptions().position(LatLng(poi.location.latitude, poi.location.longitude))
+                        .title(poi.title)
                         .icon(BitmapDescriptorFactory.defaultMarker(colourCodeMarker(poi.poiType)))
                 )
             }
@@ -129,11 +130,12 @@ class MapHome : Fragment() {
     }
 
     private fun populateMap() {
-        PoiController.loadData(requireContext()) // TODO load once only
+        //PoiController.loadData(requireContext()) // TODO load once only
 
         for (poi in PoiController.pois) {
             mMap.addMarker(
-                MarkerOptions().position(LatLng(poi.location.latitude, poi.location.longitude)).title(poi.title)
+                MarkerOptions().position(LatLng(poi.location.latitude, poi.location.longitude))
+                    .title(poi.title)
                     .icon(BitmapDescriptorFactory.defaultMarker(colourCodeMarker(poi.poiType)))
             )
         }

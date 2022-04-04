@@ -9,7 +9,7 @@ class PoiModel {
     var location: GeoPoint
     var poiType: PoiType
     var poiPoints: Int = 0
-    var img: Int = 0;
+    var imgUrl: String = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/1024px-Question_mark_%28black%29.svg.png";
     //var isPoiExplored = false
 
 //    constructor() {
@@ -22,7 +22,7 @@ class PoiModel {
         location: GeoPoint,
         poiType: PoiType,
         poiPoints: Int,
-        img: Int,
+        imgUrl: String,
     ) {
         this.title = title
         this.description = description
@@ -34,7 +34,7 @@ class PoiModel {
         }
         this.poiType = poiType
         this.poiPoints = poiPoints
-        this.img = img
+        this.imgUrl = imgUrl
     }
 
     // TODO remove lagacy constructor once Firebase integration is complete
@@ -45,7 +45,7 @@ class PoiModel {
         longitude: Double,
         poiType: PoiType,
         poiPoints: Int,
-        img: Int,
+        imgUrl: String,
     ) {
         this.title = title
         this.description = description
@@ -57,7 +57,7 @@ class PoiModel {
         }
         this.poiType = poiType
         this.poiPoints = poiPoints
-        this.img = img
+        this.imgUrl = imgUrl
     }
 
 

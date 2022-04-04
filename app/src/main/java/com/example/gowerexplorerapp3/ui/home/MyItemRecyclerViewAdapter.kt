@@ -9,6 +9,7 @@ import com.example.gowerexplorerapp3.R
 
 import com.example.gowerexplorerapp3.databinding.FragmentItemBinding
 import com.example.gowerexplorerapp3.model.PoiModel
+import com.squareup.picasso.Picasso
 
 /**
  * [RecyclerView.Adapter] that can display a [PoiModel].
@@ -32,7 +33,9 @@ class MyItemRecyclerViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
         holder.poiNameView.text = item.title
-        holder.thumbnail.setImageResource(item.img)
+        //holder.thumbnail.setImageResource(item.img)
+        Picasso.get().load(item.imgUrl).into(holder.thumbnail);
+
         holder.distance.text = item.distanceTo().toString() + " | " + item.poiPoints.toString() + " Points"
         holder.poiDescription.text = item.description
         holder.poiIsExplored.text = "Unexplored"
