@@ -1,6 +1,9 @@
 package com.example.gowerexplorerapp3.ui.poiview
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.google.android.material.snackbar.Snackbar
@@ -26,7 +29,8 @@ class PoiView : AppCompatActivity() {
                 .setAction("Action", null).show()
         }
 
-        binding.toolbarLayout.title = intent.getStringExtra("title")
+        val poiTitle = intent.getStringExtra("title")
+        binding.toolbarLayout.title = poiTitle
 
         Picasso.get()
             .load(intent.getStringExtra("imgUrl"))
@@ -36,5 +40,12 @@ class PoiView : AppCompatActivity() {
 
         findViewById<TextView>(R.id.textview).text = intent.getStringExtra("description")
 
+        findViewById<Button>(R.id.navigateTo).setOnClickListener {
+            val gmmIntentUri =
+                Uri.parse("google.navigation:q=$poiTitle,+Swansea")
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            mapIntent.setPackage("com.google.android.apps.maps")
+            startActivity(mapIntent)
+        }
     }
 }
