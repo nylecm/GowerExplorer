@@ -28,6 +28,8 @@ object PoiController {
                             document.data["title"].toString(),
                             document.data["description"].toString(),
                             document.data["location"] as GeoPoint,
+                            document.data["parkingLocation"] as GeoPoint,
+                            document.data["directions"].toString(),
                             PoiModel.PoiType.fromInt(((document.data["poiType"]) as Long).toInt()),
                             (document.data["poiPoints"] as Long).toInt(),
                             document.data["img"].toString()

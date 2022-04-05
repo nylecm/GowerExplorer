@@ -111,4 +111,7 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="action_settings">Settings</string>
+    <string name="directions_unknown">Directions Unknown</string>
+    <string name="navigate">Navigate</string>
+    <string name="rated_5_star">Rated: ⭐⭐⭐⭐⭐</string>
 </resources>
