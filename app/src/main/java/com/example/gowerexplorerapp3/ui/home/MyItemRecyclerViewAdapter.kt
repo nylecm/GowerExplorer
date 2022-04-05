@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.location.LocationManagerCompat.getCurrentLocation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gowerexplorerapp3.ui.poiview.PoiView
 import com.example.gowerexplorerapp3.databinding.FragmentItemBinding
@@ -41,7 +42,7 @@ class MyItemRecyclerViewAdapter(
             .into(holder.thumbnail);
 
         holder.distance.text =
-            item.distanceTo().toString() + " | " + item.poiPoints.toString() + " Points"
+            item.distanceTo(MapHome.lastUserLocation).toString() + " | " + item.poiPoints.toString() + " Points"
         holder.poiDescription.text = item.description
         holder.poiIsExplored.text = "Unexplored"
 

@@ -6,8 +6,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
-import androidx.fragment.app.Fragment
-
 import android.os.Bundle
 import android.os.Looper
 import android.provider.Settings
@@ -16,11 +14,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
+import androidx.fragment.app.Fragment
 import com.example.gowerexplorerapp3.R
 import com.example.gowerexplorerapp3.controller.PoiController
 import com.example.gowerexplorerapp3.model.PoiModel
 import com.google.android.gms.location.*
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -30,6 +28,8 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.firestore.GeoPoint
+
 
 class MapHome : Fragment() {
 
@@ -38,6 +38,10 @@ class MapHome : Fragment() {
     private lateinit var recenterLocationButton: FloatingActionButton
     private lateinit var mapSettingsButton: FloatingActionButton
     private var checkedItems = booleanArrayOf(true, true, true, true)
+
+    companion object {
+        var lastUserLocation: GeoPoint = GeoPoint(0.0,0.0)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -176,6 +180,7 @@ class MapHome : Fragment() {
                     Log.i("LocLatLocation", "$lat and $long")
 
                     val lastLoc = LatLng(lat, long)
+                    lastUserLocation = GeoPoint(lat, long)
 
                     //update camera
                     mMap.moveCamera(CameraUpdateFactory.zoomTo(10F))

@@ -1,4 +1,4 @@
-package com.example.gowerexplorerapp3.ui.notifications
+package com.example.gowerexplorerapp3.ui.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,13 +8,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.example.gowerexplorerapp3.R
 import com.example.gowerexplorerapp3.model.UserModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 
 class ProfileFragment : Fragment() {
 
