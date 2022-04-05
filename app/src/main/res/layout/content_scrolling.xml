@@ -28,14 +28,17 @@
                     android:id="@+id/mainImage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:contentDescription="main image" />
+                    android:contentDescription="main image"
+                    android:paddingStart="8pt"
+                    android:paddingTop="4pt"
+                    android:paddingEnd="8pt" />
 
                 <TextView
                     android:id="@+id/textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/text_margin"
-                    android:text="@string/large_text" />
+                    android:text="A veryy cool duck" />
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
@@ -46,23 +49,35 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/txtDirections"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/directions_unknown" />
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/directions_unknown"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/navigateTo"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
                     android:id="@+id/navigateTo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/navigate" />
-            </LinearLayout>
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/navigate"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>
 
