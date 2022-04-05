@@ -15,11 +15,11 @@
         android:name="com.example.gowerexplorerapp3.ui.home.ItemFragment"
         android:label="@string/title_poi_list"
         tools:layout="@layout/fragment_item_list" />
-    <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.gowerexplorerapp3.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_dashboard"-->
+<!--        android:name="com.example.gowerexplorerapp3.ui.dashboard.DashboardFragment"-->
+<!--        android:label="@string/title_dashboard"-->
+<!--        tools:layout="@layout/fragment_dashboard" />-->
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.gowerexplorerapp3.ui.profile.ProfileFragment"

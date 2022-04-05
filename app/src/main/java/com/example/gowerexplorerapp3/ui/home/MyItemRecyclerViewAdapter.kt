@@ -11,6 +11,7 @@ import com.example.gowerexplorerapp3.ui.poiview.PoiView
 import com.example.gowerexplorerapp3.databinding.FragmentItemBinding
 import com.example.gowerexplorerapp3.model.PoiModel
 import com.squareup.picasso.Picasso
+import kotlin.math.roundToInt
 
 
 /**
@@ -42,7 +43,7 @@ class MyItemRecyclerViewAdapter(
             .into(holder.thumbnail);
 
         holder.distance.text =
-            item.distanceTo(MapHome.lastUserLocation).toString() + " | " + item.poiPoints.toString() + " Points"
+            item.distanceTo(MapHome.lastUserLocation).roundToInt().toString() + "m | " + item.poiPoints.toString() + " Points"
         holder.poiDescription.text = item.description
         holder.poiIsExplored.text = "Unexplored"
 
