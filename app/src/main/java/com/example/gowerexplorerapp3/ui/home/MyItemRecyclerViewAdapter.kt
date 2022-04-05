@@ -50,6 +50,10 @@ class MyItemRecyclerViewAdapter(
             intent.putExtra("title", item.title)
             intent.putExtra("description", item.description)
             intent.putExtra("imgUrl", item.imgUrl)
+            val parkingLocation = item.parkingLocation.latitude.toString() + ", " + item.parkingLocation.longitude.toString()
+            intent.putExtra("parkingLocation", parkingLocation)
+            intent.putExtra("directions", item.directions)
+
             holder.itemView.context.startActivity(intent)
         }
     }

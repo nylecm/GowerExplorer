@@ -40,12 +40,14 @@ class PoiView : AppCompatActivity() {
 
         findViewById<TextView>(R.id.textview).text = intent.getStringExtra("description")
 
+        val poiParkingLocation = intent.getStringExtra("parkingLocation")
         findViewById<Button>(R.id.navigateTo).setOnClickListener {
             val gmmIntentUri =
-                Uri.parse("google.navigation:q=$poiTitle,+Swansea")
+                Uri.parse("google.navigation:q=$poiParkingLocation")
             val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
             mapIntent.setPackage("com.google.android.apps.maps")
             startActivity(mapIntent)
         }
+        findViewById<TextView>(R.id.txtDirections).text = intent.getStringExtra("directions")
     }
 }
