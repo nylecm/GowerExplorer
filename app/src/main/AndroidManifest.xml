@@ -12,6 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GowerExplorerApp3">
         <activity
+            android:name=".ui.logreg.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.logreg.LogInActivity"
+            android:exported="false"
+            android:label="@string/title_activity_log_in"
+            android:theme="@style/Theme.GowerExplorerApp3.NoActionBar" />
+        <activity
             android:name=".ui.poiview.PoiView"
             android:exported="false"
             android:label="@string/title_activity_poi_view"

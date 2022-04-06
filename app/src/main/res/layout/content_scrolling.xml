@@ -37,14 +37,15 @@
                     android:id="@+id/btn_check_in"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginEnd="@dimen/text_margin"
                     android:text="@string/check_in" />
 
                 <TextView
                     android:id="@+id/textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/text_margin"
-                    android:text="A very cool duck" />
+                    android:layout_margin="@dimen/text_margin"/>
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
