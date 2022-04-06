@@ -14,6 +14,7 @@ import java.util.*
 
 object PoiController {
     var pois: Vector<PoiModel> = Vector()
+    var curPoi: PoiModel? = null
 
     init {
         val db = Firebase.firestore

@@ -55,6 +55,15 @@ class PoiModel {
         }
     }
 
+//    fun isCloseEnoughToDiscover(compLocation: GeoPoint): Boolean {
+//        return (distBetween(
+//            location.latitude,
+//            location.longitude,
+//            compLocation.latitude,
+//            compLocation.longitude
+//        ) <= poiRangeInM)
+//    }
+
     fun distanceTo(compLocation: GeoPoint): Double {
         return distBetween(
             location.latitude,
