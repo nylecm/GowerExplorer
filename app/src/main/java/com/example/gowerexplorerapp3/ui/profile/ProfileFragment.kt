@@ -35,6 +35,8 @@ class ProfileFragment : Fragment() {
         } else { // A user is already logged in:
             btnLogInOut.text = getString(R.string.log_out)
             btnLogInOut.setOnClickListener {
+                CurUserManager.signOut()
+                onStart()
                 // TODO sign out code here
             }
         }

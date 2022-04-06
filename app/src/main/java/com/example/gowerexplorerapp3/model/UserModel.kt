@@ -8,29 +8,30 @@ import java.util.*
 class UserModel {
     //lateinit var email: String
     var isAdmin: Boolean = false
-    var points: Int = 0
+    var numberOfPoints: Int = 0
     var poisExplored: Vector<String> = Vector()
-    private val db = Firebase.firestore
 
     /**
      * User model constructor that can construct an arbitrary user based of set params.
      */
-    constructor(email: String, numberOfPoints: Int, poisExplored: Vector<String>) {
-
+    constructor(isAdmin: Boolean, numberOfPoints: Int, poisExplored: Vector<String>) {
+        this.isAdmin = isAdmin
+        this.numberOfPoints = numberOfPoints
+        this.poisExplored - poisExplored
     }
 
     /**
-     * User model constructor that can constrct a...
+     * User model constructor that can construct an arbitrary user based of set params. todo remove
      */
-    constructor(mAuth: FirebaseAuth) {
-        //email = mAuth.currentUser?.email.toString()
-        addNewUserToDB(mAuth.currentUser!!.uid)
+    constructor(isAdmin: Boolean, numberOfPoints: Int) {
+        this.isAdmin = isAdmin
+        this.numberOfPoints = numberOfPoints
     }
 
     private fun addNewUserToDB(uid: String) {
-        db.collection("users")
-            .document(uid)
-            .set(this)
+//        db.collection("users")
+//            .document(uid)
+//            .set(this)
     }
 }
 

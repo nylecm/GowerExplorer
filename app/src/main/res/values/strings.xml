@@ -130,4 +130,5 @@
     <string name="hello_guest_user">Hello, Guest User</string>
     <string name="log_in">Log In</string>
     <string name="log_out">Log Out</string>
+    <string name="incorrect_login_details">Incorrect Login Details.</string>
 </resources>
