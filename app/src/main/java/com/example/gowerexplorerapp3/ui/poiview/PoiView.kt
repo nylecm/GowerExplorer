@@ -13,20 +13,15 @@ import android.provider.Settings
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.example.gowerexplorerapp3.R
-import com.example.gowerexplorerapp3.controller.PoiController
+import com.example.gowerexplorerapp3.controller.PoiManager
 import com.example.gowerexplorerapp3.databinding.ActivityPoiViewBinding
-import com.example.gowerexplorerapp3.ui.home.MainActivity
-import com.example.gowerexplorerapp3.ui.home.MapHome
 import com.google.android.gms.location.*
-import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.firestore.GeoPoint
 import com.squareup.picasso.Picasso
 
@@ -34,7 +29,7 @@ class PoiView : AppCompatActivity() {
 
     private lateinit var binding: ActivityPoiViewBinding
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
-    private val curPoi = PoiController.curPoi!!
+    private val curPoi = PoiManager.curPoi!!
     var lastUserLocation: GeoPoint = GeoPoint(0.0, 0.0)
     // TODO add location itegration
 
@@ -64,7 +59,7 @@ class PoiView : AppCompatActivity() {
         findViewById<TextView>(R.id.textview).text = curPoi.description
 
         val parkingLocationStr =
-            curPoi.location.latitude.toString() + ", " + curPoi.location.longitude.toString()
+            curPoi.parkingLocation.latitude.toString() + ", " + curPoi.parkingLocation.longitude.toString()
 
         findViewById<Button>(R.id.navigateTo).setOnClickListener {
             val gmmIntentUri =

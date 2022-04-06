@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.gowerexplorerapp3.R
-import com.example.gowerexplorerapp3.controller.PoiController
+import com.example.gowerexplorerapp3.controller.PoiManager
 import com.example.gowerexplorerapp3.model.PoiModel
 import kotlin.collections.ArrayList
 
@@ -48,7 +48,7 @@ class ItemFragment : Fragment() {
     private fun populate(): ArrayList<PoiModel> {
         val list = ArrayList<PoiModel>()
 
-        for (poi in PoiController.pois) {
+        for (poi in PoiManager.pois) {
             list.add(poi)
         }
         //list.sortBy { list -> list.distance }

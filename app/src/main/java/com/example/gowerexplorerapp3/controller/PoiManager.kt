@@ -12,7 +12,7 @@ import com.google.firebase.ktx.Firebase
 import java.util.*
 
 
-object PoiController {
+object PoiManager {
     var pois: Vector<PoiModel> = Vector()
     var curPoi: PoiModel? = null
 
@@ -23,7 +23,7 @@ object PoiController {
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    Log.d("PoiController", "${document.id} => ${document.data}")
+                    Log.d("PoiManager", "${document.id} => ${document.data}")
                     this.pois.add(
                         PoiModel(
                             document.data["title"].toString(),
@@ -36,11 +36,11 @@ object PoiController {
                             document.data["img"].toString()
                         )
                     )
-                    Log.d("PoiController", "ADDED: ${document.id} => ${document.data}")
+                    Log.d("PoiManager", "ADDED: ${document.id} => ${document.data}")
                 }
             }
             .addOnFailureListener { exception ->
-                Log.d("PoiController", "Error getting documents: ", exception)
+                Log.d("PoiManager", "Error getting documents: ", exception)
             }
     }
 /*

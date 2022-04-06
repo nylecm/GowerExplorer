@@ -16,7 +16,7 @@ import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.example.gowerexplorerapp3.R
-import com.example.gowerexplorerapp3.controller.PoiController
+import com.example.gowerexplorerapp3.controller.PoiManager
 import com.example.gowerexplorerapp3.model.PoiModel
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -93,9 +93,9 @@ class MapHome : Fragment() {
 
     // TODO better if it would be looping once with a list of desired types.
     private fun populateMapWithCategory(desiredPoiType: PoiModel.PoiType) {
-        //PoiController.loadData(requireContext()) // TODO load once only
+        //PoiManager.loadData(requireContext()) // TODO load once only
 
-        for (poi in PoiController.pois) {
+        for (poi in PoiManager.pois) {
             if (poi.poiType == desiredPoiType) {
                 mMap.addMarker(
                     MarkerOptions().position(LatLng(poi.location.latitude, poi.location.longitude))
@@ -134,9 +134,9 @@ class MapHome : Fragment() {
     }
 
     private fun populateMap() {
-        //PoiController.loadData(requireContext()) // TODO load once only
+        //PoiManager.loadData(requireContext()) // TODO load once only
 
-        for (poi in PoiController.pois) {
+        for (poi in PoiManager.pois) {
             mMap.addMarker(
                 MarkerOptions().position(LatLng(poi.location.latitude, poi.location.longitude))
                     .title(poi.title)

@@ -1,102 +1,45 @@
 package com.example.gowerexplorerapp3.ui.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.gowerexplorerapp3.R
-import com.example.gowerexplorerapp3.model.UserModel
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
+import com.example.gowerexplorerapp3.controller.CurUserManager
+import com.example.gowerexplorerapp3.ui.logreg.LogInActivity
 
 class ProfileFragment : Fragment() {
-
-    private var mAuth = FirebaseAuth.getInstance()
-
-    private var currentUser = mAuth.currentUser
-
-    private lateinit var emailInput: EditText
-    private lateinit var passwordInput: EditText
-    private lateinit var loginButton: Button
-    private lateinit var registerButton: Button
-    private lateinit var msgView: TextView
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val root: View = inflater.inflate(R.layout.fragment_profile, container, false)
-        return root
-    }
-
-    fun update() {
-        currentUser = mAuth.currentUser
-        val currentEmail = currentUser?.email
-        if (currentEmail == null) {
-            msgView.text = "Not logged in!"
-        } else {
-            msgView.text = "logged in as: $currentEmail"
-        }
-
+    ): View? {
+        return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
     override fun onStart() {
         super.onStart()
-        emailInput = view?.findViewById(R.id.inputEmail)!!
-        passwordInput = view?.findViewById(R.id.inputPassword)!!
-        loginButton = view?.findViewById(R.id.btnLogIn)!!
-        registerButton = view?.findViewById(R.id.btnRegister)!!
-        msgView = view?.findViewById(R.id.txtStatus)!!
 
-        loginButton.setOnClickListener {
-            loginClick()
-        }
-        registerButton.setOnClickListener {
-            registerClick()
-        }
-        update()
-    }
+        val btnLogInOut: Button = view?.findViewById(R.id.btn_log_in_out)!!
 
-    private fun loginClick () {
-        mAuth.signInWithEmailAndPassword(
-            emailInput.text.toString(),
-            passwordInput.text.toString()
-        ).addOnCompleteListener(this.requireActivity()) { task ->
-            if (task.isSuccessful) {
-                update()
-                //closeKeyBoard()
-            } else {
-                msgView.text = "very epic fail"
+        // No user is logged in:
+        if (CurUserManager.curUser == null) {
+            btnLogInOut.setOnClickListener {
+                val intent = Intent(requireContext(), LogInActivity::class.java)
+                requireContext().startActivity(intent)
+            }
+        } else { // A user is already logged in:
+            btnLogInOut.text = getString(R.string.log_out)
+            btnLogInOut.setOnClickListener {
+                // TODO sign out code here
             }
         }
+
+
+
     }
-
-    private fun registerClick() {
-        mAuth.createUserWithEmailAndPassword(
-            emailInput.text.toString(),
-            passwordInput.text.toString()
-        ).addOnCompleteListener(this.requireActivity()) { task ->
-            if (task.isSuccessful) {
-                // TODO...
-                val firebaseUser: FirebaseUser = task.result.user!!
-                update()
-                val user = UserModel(mAuth)
-
-            } else {
-                // TODO...
-            }
-        }
-    }
-
-    //private fun closeKeyBoard() {
-    //    TODO("Not yet implemented")
-    //}
 }

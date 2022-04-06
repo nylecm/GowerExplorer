@@ -5,9 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.location.LocationManagerCompat.getCurrentLocation
 import androidx.recyclerview.widget.RecyclerView
-import com.example.gowerexplorerapp3.controller.PoiController
+import com.example.gowerexplorerapp3.controller.PoiManager
 import com.example.gowerexplorerapp3.ui.poiview.PoiView
 import com.example.gowerexplorerapp3.databinding.FragmentItemBinding
 import com.example.gowerexplorerapp3.model.PoiModel
@@ -50,7 +49,7 @@ class MyItemRecyclerViewAdapter(
 
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.getContext(), PoiView::class.java)
-            PoiController.curPoi = item
+            PoiManager.curPoi = item
 //            intent.putExtra("title", item.title)
 //            intent.putExtra("description", item.description)
 //            intent.putExtra("imgUrl", item.imgUrl)
