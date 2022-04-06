@@ -16,7 +16,7 @@ class PoiModel {
     var poiPoints: Int = 0
     var imgUrl: String =
         "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/1024px-Question_mark_%28black%29.svg.png";
-    var poiRangeInM: Int = 100
+    private var poiRangeInM: Int = 100
 
     constructor(
         title: String,
@@ -55,14 +55,14 @@ class PoiModel {
         }
     }
 
-//    fun isCloseEnoughToDiscover(compLocation: GeoPoint): Boolean {
-//        return (distBetween(
-//            location.latitude,
-//            location.longitude,
-//            compLocation.latitude,
-//            compLocation.longitude
-//        ) <= poiRangeInM)
-//    }
+    fun isCloseEnoughToDiscover(compLocation: GeoPoint): Boolean {
+        return (distBetween(
+            location.latitude,
+            location.longitude,
+            compLocation.latitude,
+            compLocation.longitude
+        ) <= poiRangeInM)
+    }
 
     fun distanceTo(compLocation: GeoPoint): Double {
         return distBetween(

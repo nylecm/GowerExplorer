@@ -28,17 +28,23 @@
                     android:id="@+id/mainImage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:contentDescription="main image"
+                    android:contentDescription="@string/main_image"
                     android:paddingStart="8pt"
                     android:paddingTop="4pt"
                     android:paddingEnd="8pt" />
+
+                <Button
+                    android:id="@+id/btn_check_in"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/check_in" />
 
                 <TextView
                     android:id="@+id/textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/text_margin"
-                    android:text="A veryy cool duck" />
+                    android:text="A very cool duck" />
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
