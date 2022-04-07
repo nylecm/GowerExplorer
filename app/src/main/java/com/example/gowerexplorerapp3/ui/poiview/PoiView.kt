@@ -9,6 +9,7 @@ import android.location.LocationManager
 import android.net.Uri
 import android.os.Bundle
 import android.os.Looper
+import android.os.UserManager
 import android.provider.Settings
 import android.speech.tts.TextToSpeech
 import android.util.Log
@@ -16,6 +17,7 @@ import android.widget.*
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.view.isVisible
 import com.example.gowerexplorerapp3.R
 import com.example.gowerexplorerapp3.controller.MyUserManager
 import com.example.gowerexplorerapp3.controller.PoiManager
@@ -36,6 +38,7 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
     private lateinit var binding: ActivityPoiViewBinding
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
     private lateinit var btnSpeak: Button
+    private lateinit var btnCheckIn: Button
     private lateinit var reviewHolder: LinearLayout
     private lateinit var mainLinearLayout: LinearLayout
     var lastUserLocation: GeoPoint = GeoPoint(0.0, 0.0)
@@ -47,6 +50,7 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
         super.onCreate(savedInstanceState)
         mFusedLocationClient =
             LocationServices.getFusedLocationProviderClient(this)
+        getLastLocation()
         binding = ActivityPoiViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -81,12 +85,24 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
         findViewById<TextView>(R.id.txtDirections).text = PoiManager.curPoi!!.directions
 
-        findViewById<Button>(R.id.btn_check_in).setOnClickListener {
-            getLastLocation()
-            if (PoiManager.curPoi!!.isCloseEnoughToDiscover(this.lastUserLocation)) {
-                Log.i(TAG, "Close Enough")
+        btnCheckIn = findViewById(R.id.btn_check_in)
+
+        btnCheckIn.setOnClickListener {
+            if (MyUserManager.curUser != null) {
+                getLastLocation()
+                if (PoiManager.curPoi!!.isCloseEnoughToDiscover(this.lastUserLocation)) {
+                    Log.d(TAG, "Close Enough")
+                    MyUserManager.creditUserPointsAndDiscoverPoi()
+                    Snackbar.make(it, "You have discovered the PoI.", Snackbar.LENGTH_LONG)
+                        .show()
+                } else {
+                    Log.d(TAG, "Not Close Enough")
+                    Snackbar.make(it, "You are not close enough to discover the PoI.", Snackbar.LENGTH_LONG)
+                        .show()
+                }
             } else {
-                Log.i(TAG, "Not Close Enough")
+                Snackbar.make(it, "You must be logged in to discover the PoI.", Snackbar.LENGTH_LONG)
+                    .show()
             }
         }
 

@@ -34,8 +34,10 @@ object MyUserManager {
                     curUser = UserModel(
                         document["userName"] as String,
                         document["admin"] as Boolean,
-                        ((document.data?.get("numberOfPoints")) as Long).toInt()
+                        ((document.data?.get("numberOfPoints")) as Long).toInt(),
+                        document["poisExplored"] as ArrayList<String>
                     )
+                    Log.d(TAG, "poisExplored data: ${curUser!!.poisExplored}")
                 } else {
                     Log.d(TAG, "No such document")
                 }
@@ -58,7 +60,7 @@ object MyUserManager {
     fun registerNewUser(userName: String) {
         val db = Firebase.firestore
 
-        curUser = UserModel(userName, false, 0)
+        curUser = UserModel(userName, false, 0, ArrayList())
 
         db.collection("users")
             .document(mAuth.currentUser!!.uid)
@@ -68,5 +70,22 @@ object MyUserManager {
     fun signOut() {
         mAuth.signOut()
         curUser = null
+    }
+
+    fun creditUserPointsAndDiscoverPoi() {
+        creditUserPoints(PoiManager.curPoi!!.poiPoints)
+        discoverPoi()
+    }
+
+    fun creditUserPoints(numberOfPointsToAdd: Int) {
+        val db = Firebase.firestore
+        curUser!!.numberOfPoints += numberOfPointsToAdd
+        db.collection("users").document(mAuth.currentUser!!.uid).update("numberOfPoints", curUser!!.numberOfPoints);
+    }
+
+    private fun discoverPoi() {
+        val db = Firebase.firestore
+        curUser!!.poisExplored.add(PoiManager.curPoi!!.poiId)
+        db.collection("users").document(mAuth.currentUser!!.uid).update("poisExplored", curUser!!.poisExplored);
     }
 }

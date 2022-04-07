@@ -1,5 +1,6 @@
 package com.example.gowerexplorerapp3.model
 
+import android.util.Log
 import com.google.firebase.firestore.GeoPoint
 import kotlin.math.atan2
 import kotlin.math.cos
@@ -7,6 +8,8 @@ import kotlin.math.sin
 import kotlin.math.sqrt
 
 class PoiModel {
+    val TAG = "PoiModel"
+
     val poiId: String
     var title: String
     var description: String
@@ -20,7 +23,7 @@ class PoiModel {
     var poiRangeInM: Int = 100
 
     constructor(
-        poiId:String,
+        poiId: String,
         title: String,
         description: String,
         location: GeoPoint,
@@ -47,7 +50,7 @@ class PoiModel {
     }
 
     constructor(
-        poiId:String,
+        poiId: String,
         title: String,
         description: String,
         location: GeoPoint,
@@ -88,6 +91,14 @@ class PoiModel {
     }
 
     fun isCloseEnoughToDiscover(compLocation: GeoPoint): Boolean {
+        Log.d(
+            TAG, distBetween(
+                location.latitude,
+                location.longitude,
+                compLocation.latitude,
+                compLocation.longitude
+            ).toString()
+        )
         return (distBetween(
             location.latitude,
             location.longitude,
