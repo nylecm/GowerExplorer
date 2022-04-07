@@ -58,6 +58,7 @@ object PoiManager {
 
     fun addPoi(
         poiId: String,
+        poiType: Int,
         title: String,
         imageUrl: String,
         description: String,
@@ -76,18 +77,27 @@ object PoiManager {
             GeoPoint(poiLatitude, poiLongitude),
             GeoPoint(poiParkingLatitude, poiParkingLongitude),
             directions,
-            PoiModel.PoiType.BEACH,
+            PoiModel.PoiType.fromInt(poiType),
             numberOfPoints,
             imageUrl,
             discoveryRange
-        ) // todo support for poi type
+        )
         curPoi = editedPoi
 
         val db = Firebase.firestore
 
         db.collection("poi")
             .document(poiId)
-            .set(editedPoi)
+            .set(
+                mapOf("description" to description,
+                "directions" to directions,
+                "img" to imageUrl,
+                "location" to GeoPoint(poiLatitude, poiLongitude),
+                "parkingLocation" to GeoPoint(poiParkingLatitude, poiParkingLongitude),
+                "poiPoints" to numberOfPoints,
+                "poiType" to poiType,
+                "title" to title)
+            )
     }
 
     fun addPoi(

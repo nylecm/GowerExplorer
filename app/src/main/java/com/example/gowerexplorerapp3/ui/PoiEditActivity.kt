@@ -2,14 +2,12 @@ package com.example.gowerexplorerapp3.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Spinner
+import android.view.View
+import android.widget.*
 import com.example.gowerexplorerapp3.R
 import com.example.gowerexplorerapp3.controller.PoiManager
 
-class PoiEditActivity : AppCompatActivity() {
+class PoiEditActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private lateinit var txtTitle: EditText
     private lateinit var spinnerPoiType: Spinner
     private lateinit var txtImageUrl: EditText
@@ -22,6 +20,7 @@ class PoiEditActivity : AppCompatActivity() {
     private lateinit var txtNumberOfPoints: EditText
     private lateinit var txtDiscoveryRange: EditText
     private lateinit var btnSubmit: Button
+    private var curSelectedPos: Int = 0
 
 
     var isEditing: Boolean = false
@@ -69,6 +68,7 @@ class PoiEditActivity : AppCompatActivity() {
                 PoiManager.deletePoi(PoiManager.curPoi!!)
                 PoiManager.addPoi(
                     PoiManager.curPoi!!.poiId,
+                    curSelectedPos,
                     txtTitle.text.toString(),
                     txtImageUrl.text.toString(),
                     txtDescription.text.toString(),
@@ -97,5 +97,13 @@ class PoiEditActivity : AppCompatActivity() {
         txtPoiParkingLongitude.setText(PoiManager.curPoi!!.parkingLocation.longitude.toString())
         txtNumberOfPoints.setText(PoiManager.curPoi!!.poiPoints.toString())
         txtDiscoveryRange.setText(PoiManager.curPoi!!.poiRangeInM.toString())
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+        curSelectedPos = pos
+    }
+
+    override fun onNothingSelected(p0: AdapterView<*>?) {
+        TODO("Not yet implemented")
     }
 }
