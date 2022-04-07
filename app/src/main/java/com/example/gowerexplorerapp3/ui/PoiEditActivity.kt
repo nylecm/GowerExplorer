@@ -2,6 +2,7 @@ package com.example.gowerexplorerapp3.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import com.example.gowerexplorerapp3.R
@@ -9,6 +10,7 @@ import com.example.gowerexplorerapp3.controller.PoiManager
 import com.google.android.material.snackbar.Snackbar
 
 class PoiEditActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+    private val TAG = "PoiEditActivity"
     private lateinit var txtTitle: EditText
     private lateinit var spinnerPoiType: Spinner
     private lateinit var txtImageUrl: EditText
@@ -69,7 +71,7 @@ class PoiEditActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
                 PoiManager.deletePoi(PoiManager.curPoi!!)
                 PoiManager.addPoi(
                     PoiManager.curPoi!!.poiId,
-                    curSelectedPos,
+                    spinnerPoiType.selectedItemPosition,
                     txtTitle.text.toString(),
                     txtImageUrl.text.toString(),
                     txtDescription.text.toString(),
@@ -118,7 +120,8 @@ class PoiEditActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
-        curSelectedPos = pos
+        curSelectedPos = id.toInt()
+        Log.d(TAG, curSelectedPos.toString())
     }
 
     override fun onNothingSelected(p0: AdapterView<*>?) {

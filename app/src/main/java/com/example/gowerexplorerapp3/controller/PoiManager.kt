@@ -25,6 +25,7 @@ object PoiManager {
             .addOnSuccessListener { result ->
                 for (document in result) {
                     Log.d(TAG, "${document.id} => ${document.data}")
+
                     this.pois.add(
                         PoiModel(
                             document.id,
@@ -35,7 +36,8 @@ object PoiManager {
                             document.data["directions"].toString(),
                             PoiModel.PoiType.fromInt(((document.data["poiType"]) as Long).toInt()),
                             (document.data["poiPoints"] as Long).toInt(),
-                            document.data["img"].toString()
+                            document.data["img"].toString(),
+                            (document.data["poiRange"] as Long).toInt()
                         )
                     )
                     Log.d(TAG, "ADDED: ${document.id} => ${document.data}")
@@ -89,14 +91,17 @@ object PoiManager {
         db.collection("poi")
             .document(poiId)
             .set(
-                mapOf("description" to description,
-                "directions" to directions,
-                "img" to imageUrl,
-                "location" to GeoPoint(poiLatitude, poiLongitude),
-                "parkingLocation" to GeoPoint(poiParkingLatitude, poiParkingLongitude),
-                "poiPoints" to numberOfPoints,
-                "poiType" to poiType,
-                "title" to title)
+                mapOf(
+                    "description" to description,
+                    "directions" to directions,
+                    "title" to title,
+                    "img" to imageUrl,
+                    "location" to GeoPoint(poiLatitude, poiLongitude),
+                    "parkingLocation" to GeoPoint(poiParkingLatitude, poiParkingLongitude),
+                    "poiPoints" to numberOfPoints,
+                    "poiType" to poiType,
+                    "poiRange" to discoveryRange
+                )
             )
     }
 
@@ -119,14 +124,17 @@ object PoiManager {
         db.collection("poi")
             .document(id.toString())
             .set(
-                mapOf("description" to description,
+                mapOf(
+                    "description" to description,
                     "directions" to directions,
                     "img" to imageUrl,
                     "location" to GeoPoint(poiLatitude, poiLongitude),
                     "parkingLocation" to GeoPoint(poiParkingLatitude, poiParkingLongitude),
                     "poiPoints" to numberOfPoints,
                     "poiType" to poiType,
-                    "title" to title)
+                    "title" to title,
+                    "poiRange" to discoveryRange
+                )
             )
     }
 }

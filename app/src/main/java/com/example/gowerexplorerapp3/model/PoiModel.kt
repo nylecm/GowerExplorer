@@ -32,7 +32,7 @@ class PoiModel {
         poiType: PoiType,
         poiPoints: Int,
         img: String,
-        poiRangeInM: Int = 400
+        poiRangeInM: Int
     ) {
         this.poiId = poiId
         this.title = title
@@ -48,6 +48,7 @@ class PoiModel {
         this.poiType = poiType
         this.poiPoints = poiPoints
         this.img = img
+        this.poiRangeInM = poiRangeInM
     }
 
     enum class PoiType(val value: Int) {

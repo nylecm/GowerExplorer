@@ -132,7 +132,6 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
         val editPoiButton = Button(this)
         editPoiButton.text = getString(R.string.edit_poi)
         editPoiButton.setPadding(24, 8, 24, 8)
-        mainLinearLayout.addView(editPoiButton)
 
         editPoiButton.setOnClickListener {
             val intent = Intent(this, PoiEditActivity::class.java)
@@ -142,12 +141,16 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
         val deletePoiButton = Button(this)
         deletePoiButton.text = getString(R.string.delete_poi)
         deletePoiButton.setPadding(24, 8, 24, 16)
-        mainLinearLayout.addView(deletePoiButton)
 
         deletePoiButton.setOnClickListener {
             PoiManager.deletePoi(PoiManager.curPoi!!)
             Snackbar.make(binding.root, "Poi Deleted, Please Re-open App.", Snackbar.LENGTH_SHORT)
                 .show()
+        }
+
+        if (MyUserManager.curUser != null && MyUserManager.curUser!!.isAdmin) {
+            mainLinearLayout.addView(editPoiButton)
+            mainLinearLayout.addView(deletePoiButton)
         }
     }
 
