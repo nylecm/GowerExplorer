@@ -26,6 +26,7 @@ object PoiManager {
                     Log.d("PoiManager", "${document.id} => ${document.data}")
                     this.pois.add(
                         PoiModel(
+                            document.id,
                             document.data["title"].toString(),
                             document.data["description"].toString(),
                             document.data["location"] as GeoPoint,

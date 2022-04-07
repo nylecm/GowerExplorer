@@ -9,6 +9,7 @@
     tools:showIn="@layout/activity_poi_view">
 
     <LinearLayout
+        android:id="@+id/ll_scroll_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -119,17 +120,29 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/write_your_review_here"
                     android:inputType="textMultiLine"
-                    android:minLines="1"
-                    android:maxLines="10" />
+                    android:maxLines="10"
+                    android:minLines="1" />
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/post_review"/>
-
-
+                    android:text="@string/post_review" />
             </LinearLayout>
 
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/poi_review_contents"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+
+            <LinearLayout
+                android:id="@+id/ll_reviews"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>

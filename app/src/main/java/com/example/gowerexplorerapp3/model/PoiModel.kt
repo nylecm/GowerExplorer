@@ -7,6 +7,7 @@ import kotlin.math.sin
 import kotlin.math.sqrt
 
 class PoiModel {
+    val poiId: String
     var title: String
     var description: String
     var location: GeoPoint
@@ -19,6 +20,7 @@ class PoiModel {
     private var poiRangeInM: Int = 100
 
     constructor(
+        poiId:String,
         title: String,
         description: String,
         location: GeoPoint,
@@ -26,8 +28,9 @@ class PoiModel {
         directions: String,
         poiType: PoiType,
         poiPoints: Int,
-        imgUrl: String,
+        imgUrl: String
     ) {
+        this.poiId = poiId
         this.title = title
         this.description = description
         this.location = location

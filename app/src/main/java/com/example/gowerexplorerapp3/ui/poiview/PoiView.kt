@@ -14,6 +14,7 @@ import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -24,12 +25,15 @@ import com.example.gowerexplorerapp3.databinding.ActivityPoiViewBinding
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.firestore.GeoPoint
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
 import org.w3c.dom.Text
 import java.util.*
 
 class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
 
+    private val TAG: String = "PoiView"
     private lateinit var binding: ActivityPoiViewBinding
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
     private lateinit var btnSpeak: Button
@@ -48,10 +52,10 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         setSupportActionBar(findViewById(R.id.toolbar))
         binding.toolbarLayout.title = title
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
+//        binding.fab.setOnClickListener { view ->
+//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                .setAction("Action", null).show()
+//        }
 
         //val poiTitle = intent.getStringExtra("title")
         binding.toolbarLayout.title = curPoi.title
@@ -85,11 +89,41 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
         findViewById<Button>(R.id.btn_check_in).setOnClickListener {
             getLastLocation()
             if (curPoi.isCloseEnoughToDiscover(this.lastUserLocation)) {
-                Log.i("Poi View", "Close Enough")
+                Log.i(TAG, "Close Enough")
             } else {
-                Log.i("Poi View", "Not Close Enough")
+                Log.i(TAG, "Not Close Enough")
             }
         }
+
+        populateReviews()
+    }
+
+    private fun populateReviews() {
+        val db = Firebase.firestore
+
+        db.collection("reviews")
+            .whereEqualTo("poiId", PoiManager.curPoi!!.poiId)
+            .get()
+            .addOnSuccessListener { documents ->
+                if (documents.size() == 0) {
+                    val txtNoReviews = TextView(this)
+                    txtNoReviews.text = getString(R.string.no_reviews)
+                    findViewById<LinearLayout>(R.id.ll_reviews).addView(txtNoReviews)
+                } else {
+                    for (document in documents) { // fill up reviews
+                        val txtReview = TextView(this)
+                        txtReview.text = document["content"].toString()
+                        findViewById<LinearLayout>(R.id.ll_reviews).addView(txtReview)
+
+
+                        Log.d(TAG, "${document.id} => ${document.data}")
+                    }
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w(TAG, "Error getting documents: ", exception)
+            }
+
     }
 
     private fun speakOut(text: String) {
