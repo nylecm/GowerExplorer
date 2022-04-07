@@ -88,7 +88,19 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
         btnCheckIn = findViewById(R.id.btn_check_in)
 
         btnCheckIn.setOnClickListener {
-            if (MyUserManager.curUser != null) {
+            if (MyUserManager.curUser == null) {
+                Snackbar.make(
+                    it,
+                    "You must be logged in to discover the PoI.",
+                    Snackbar.LENGTH_LONG
+                ).show()
+            } else if (MyUserManager.curUser!!.poisExplored.contains(PoiManager.curPoi!!.poiId)) {
+                Snackbar.make(
+                    it,
+                    "PoI already explored.",
+                    Snackbar.LENGTH_LONG
+                ).show()
+            } else {
                 getLastLocation()
                 if (PoiManager.curPoi!!.isCloseEnoughToDiscover(this.lastUserLocation)) {
                     Log.d(TAG, "Close Enough")
@@ -97,12 +109,12 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
                         .show()
                 } else {
                     Log.d(TAG, "Not Close Enough")
-                    Snackbar.make(it, "You are not close enough to discover the PoI.", Snackbar.LENGTH_LONG)
-                        .show()
+                    Snackbar.make(
+                        it,
+                        "You are not close enough to discover the PoI.",
+                        Snackbar.LENGTH_LONG
+                    ).show()
                 }
-            } else {
-                Snackbar.make(it, "You must be logged in to discover the PoI.", Snackbar.LENGTH_LONG)
-                    .show()
             }
         }
 

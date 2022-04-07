@@ -20,34 +20,7 @@ class PoiModel {
     var poiPoints: Int = 0
     var img: String =
         "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/1024px-Question_mark_%28black%29.svg.png";
-    var poiRangeInM: Int = 100
-
-    constructor(
-        poiId: String,
-        title: String,
-        description: String,
-        location: GeoPoint,
-        parkingLocation: GeoPoint,
-        directions: String,
-        poiType: PoiType,
-        poiPoints: Int,
-        img: String
-    ) {
-        this.poiId = poiId
-        this.title = title
-        this.description = description
-        this.location = location
-        this.parkingLocation = parkingLocation
-        this.directions = directions
-        if (poiType.equals("")) {
-            this.poiType = poiType
-        } else {
-            this.poiType = PoiType.MISC
-        }
-        this.poiType = poiType
-        this.poiPoints = poiPoints
-        this.img = img
-    }
+    var poiRangeInM: Int = 400
 
     constructor(
         poiId: String,
@@ -59,7 +32,7 @@ class PoiModel {
         poiType: PoiType,
         poiPoints: Int,
         img: String,
-        poiRangeInM: Int
+        poiRangeInM: Int = 400
     ) {
         this.poiId = poiId
         this.title = title
@@ -75,7 +48,6 @@ class PoiModel {
         this.poiType = poiType
         this.poiPoints = poiPoints
         this.img = img
-        this.poiRangeInM = poiRangeInM
     }
 
     enum class PoiType(val value: Int) {
