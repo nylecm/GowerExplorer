@@ -45,7 +45,7 @@
                     android:id="@+id/textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/text_margin"/>
+                    android:layout_margin="@dimen/text_margin" />
 
                 <Button
                     android:id="@+id/btn_speak"
@@ -53,8 +53,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/text_margin"
                     android:layout_marginEnd="@dimen/text_margin"
-                    android:text="@string/speak"
-                    android:enabled="false"/>
+                    android:enabled="false"
+                    android:text="@string/speak" />
 
             </LinearLayout>
 
@@ -107,12 +107,26 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/rated_5_star" />
+                    android:text="0 Reviews, average rating 4.7/5" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/write_your_review_here"
+                    android:inputType="textMultiLine"
+                    android:minLines="1"
+                    android:maxLines="10" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/post_review"/>
+
 
             </LinearLayout>
 

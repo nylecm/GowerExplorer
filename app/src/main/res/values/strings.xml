@@ -136,4 +136,6 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="username">Username</string>
     <string name="speak">Speak</string>
+    <string name="write_your_review_here">Write Your Review Here:</string>
+    <string name="post_review">Post Review (+5 Points)</string>
 </resources>

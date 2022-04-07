@@ -64,7 +64,7 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         findViewById<TextView>(R.id.textview).text = curPoi.description
 
-        btnSpeak = findViewById<Button>(R.id.btn_speak)
+        btnSpeak = findViewById(R.id.btn_speak)
         btnSpeak.isEnabled = false;
         tts = TextToSpeech(this, this)
 
@@ -204,7 +204,7 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
             val result = tts!!.setLanguage(Locale.UK)
 
             if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                Log.e("TTS","The Language specified is not supported!")
+                Log.e("TTS", "The Language specified is not supported!")
             } else {
                 btnSpeak.isEnabled = true
             }
