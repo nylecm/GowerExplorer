@@ -14,4 +14,6 @@ class ReviewModel {
         this.poiId = poiId
         this.stars = stars
     }
+
+
 }

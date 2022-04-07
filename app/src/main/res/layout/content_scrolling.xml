@@ -108,24 +108,44 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_margin="16dp">
+                android:layout_margin="16dp"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/txt_review_summary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="0 Reviews" />
+                    android:text="@string/_0_reviews_dummy" />
 
                 <EditText
+                    android:id="@+id/txt_new_review_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/review_title_hint"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:maxLines="1" />
+
+                <RatingBar
+                    android:id="@+id/rating_review_new"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:stepSize="1" />
+
+                <EditText
+                    android:id="@+id/txt_new_review_contents"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/write_your_review_here"
+                    android:importantForAutofill="no"
                     android:inputType="textMultiLine"
                     android:maxLines="10"
                     android:minLines="1" />
 
+
                 <Button
+                    android:id="@+id/btn_post_review"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/post_review" />
@@ -141,14 +161,13 @@
 
             <LinearLayout
                 android:id="@+id/ll_reviews"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-            </LinearLayout>
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="vertical"></LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>

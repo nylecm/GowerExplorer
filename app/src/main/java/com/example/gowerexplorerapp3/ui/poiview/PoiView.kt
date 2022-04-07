@@ -23,6 +23,7 @@ import com.example.gowerexplorerapp3.R
 import com.example.gowerexplorerapp3.controller.MyUserManager
 import com.example.gowerexplorerapp3.controller.PoiManager
 import com.example.gowerexplorerapp3.databinding.ActivityPoiViewBinding
+import com.example.gowerexplorerapp3.model.ReviewModel
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.firestore.GeoPoint
@@ -98,6 +99,10 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
 
         reviewHolder = findViewById(R.id.ll_reviews)
+
+        findViewById<Button>(R.id.btn_post_review).setOnClickListener {
+            //ReviewModel()
+        }
         populateReviews()
     }
 
@@ -151,8 +156,6 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
                         txtReviewContent.text = document["content"].toString()
                         txtReviewContent.setPadding(0, 0, 0, 16)
                         reviewHolder.addView(txtReviewContent)
-
-
                         Log.d(TAG, "${document.id} => ${document.data}")
                     }
 

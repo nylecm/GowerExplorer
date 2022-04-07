@@ -139,4 +139,6 @@
     <string name="write_your_review_here">Write Your Review Here:</string>
     <string name="post_review">Post Review (+5 Points)</string>
     <string name="no_reviews">No Reviews</string>
+    <string name="review_title_hint">Review Title</string>
+    <string name="_0_reviews_dummy">0 Reviews</string>
 </resources>
