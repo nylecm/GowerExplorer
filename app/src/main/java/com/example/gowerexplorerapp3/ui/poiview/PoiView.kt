@@ -127,9 +127,16 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
             db.collection("reviews")
                 .document(review.hashCode().toString())
                 .set(review)
+            updateReviews()
+            Snackbar.make(binding.root, "Review Posted!", Snackbar.LENGTH_SHORT).show()
         } else {
-
+            Snackbar.make(binding.root, "You must be logged in to post a review", Snackbar.LENGTH_SHORT).show()
         }
+    }
+
+    private fun updateReviews() {
+        reviewHolder.removeAllViews()
+        populateReviews()
     }
 
     private fun populateReviews() {
