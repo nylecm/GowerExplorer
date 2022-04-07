@@ -3,17 +3,11 @@ package com.example.gowerexplorerapp3.ui.logreg
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import com.example.gowerexplorerapp3.R
 import com.example.gowerexplorerapp3.controller.CurUserManager
-import com.example.gowerexplorerapp3.model.UserModel
-import com.google.firebase.auth.FirebaseUser
 
 class LogInActivity : AppCompatActivity() {
     private lateinit var emailInput: EditText
@@ -32,11 +26,11 @@ class LogInActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        emailInput = findViewById(R.id.inputEmail)
-        passwordInput = findViewById(R.id.inputPassword)
+        emailInput = findViewById(R.id.txt_email)
+        passwordInput = findViewById(R.id.txt_password)
         loginButton = findViewById(R.id.btnLogIn)
         registerButton = findViewById(R.id.btnRegister)
-        msgView = findViewById(R.id.txtStatus)
+        msgView = findViewById(R.id.txt_status)
 
         loginButton.setOnClickListener {
             loginClick()

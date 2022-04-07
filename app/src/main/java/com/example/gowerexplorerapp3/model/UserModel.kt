@@ -31,10 +31,8 @@ class UserModel {
         this.numberOfPoints = numberOfPoints
     }
 
-    private fun addNewUserToDB(uid: String) {
-//        db.collection("users")
-//            .document(uid)
-//            .set(this)
+    private fun addToDB(uid: String) {
+
     }
 }
 

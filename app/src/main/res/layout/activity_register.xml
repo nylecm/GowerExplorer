@@ -4,6 +4,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.logreg.RegisterActivity">
+    tools:context=".ui.logreg.LogInActivity">
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Register"
+        app:layout_constraintEnd_toEndOf="@+id/txt_password_conf"
+        app:layout_constraintStart_toStartOf="@+id/txt_password_conf"
+        app:layout_constraintTop_toBottomOf="@+id/txt_password_conf" />
+
+    <TextView
+        android:id="@+id/txt_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="11dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/btnRegister"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
+
+    <EditText
+        android:id="@+id/txt_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="79dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txt_user_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/username"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="@+id/txt_email"
+        app:layout_constraintStart_toStartOf="@+id/txt_email"
+        app:layout_constraintTop_toBottomOf="@+id/txt_email" />
+
+    <EditText
+        android:id="@+id/txt_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/txt_user_name"
+        app:layout_constraintStart_toStartOf="@+id/txt_user_name"
+        app:layout_constraintTop_toBottomOf="@+id/txt_user_name" />
+
+    <EditText
+        android:id="@+id/txt_password_conf"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/confirm_password"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/txt_password"
+        app:layout_constraintStart_toStartOf="@+id/txt_password"
+        app:layout_constraintTop_toBottomOf="@+id/txt_password" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
