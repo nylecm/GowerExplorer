@@ -134,13 +134,11 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
                                     "${document["title"].toString()}, by: $userName"
                             }
                             .addOnFailureListener { exception ->
-                                Log.d(TAG, "no username found, for user: '$uid'")
+                                Log.d(TAG, "no username fou nd, for user: '$uid'")
                                 txtReviewTitle.text =
                                     "${document["title"].toString()}, by: N/A"
 
                             }
-
-
 
                         val stars = (document["stars"] as Long).toInt()
                         totalStars += stars
@@ -151,13 +149,15 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
 
                         val txtReviewContent = TextView(this)
                         txtReviewContent.text = document["content"].toString()
+                        txtReviewContent.setPadding(0, 0, 0, 16)
                         reviewHolder.addView(txtReviewContent)
 
 
                         Log.d(TAG, "${document.id} => ${document.data}")
                     }
 
-                    var averageStars = totalStars / documents.size()
+                    findViewById<TextView>(R.id.txt_review_summary).text =
+                        "${documents.size()} Review(s), Avg Rating: ${totalStars.toDouble() / documents.size()}."
                     // todo display stars
                 }
             }
