@@ -22,6 +22,7 @@ import com.example.gowerexplorerapp3.controller.MyUserManager
 import com.example.gowerexplorerapp3.controller.PoiManager
 import com.example.gowerexplorerapp3.databinding.ActivityPoiViewBinding
 import com.example.gowerexplorerapp3.model.ReviewModel
+import com.example.gowerexplorerapp3.ui.PoiEditActivity
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.firestore.GeoPoint
@@ -38,6 +39,7 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
     private lateinit var btnSpeak: Button
     private lateinit var reviewHolder: LinearLayout
+    private lateinit var mainLinearLayout: LinearLayout
     private val curPoi = PoiManager.curPoi!!
     var lastUserLocation: GeoPoint = GeoPoint(0.0, 0.0)
     private var tts: TextToSpeech? = null
@@ -53,12 +55,7 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         setSupportActionBar(findViewById(R.id.toolbar))
         binding.toolbarLayout.title = title
-//        binding.fab.setOnClickListener { view ->
-//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                .setAction("Action", null).show()
-//        }
 
-        //val poiTitle = intent.getStringExtra("title")
         binding.toolbarLayout.title = curPoi.title
 
         Picasso.get()
@@ -104,6 +101,29 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         }
         populateReviews()
+
+        mainLinearLayout = findViewById<LinearLayout>(R.id.ll_scroll_main)
+
+        val editPoiButton = Button(this)
+        editPoiButton.text = getString(R.string.edit_poi)
+        editPoiButton.setPadding(24, 8, 24, 8)
+        mainLinearLayout.addView(editPoiButton)
+
+        editPoiButton.setOnClickListener {
+            val intent = Intent(this, PoiEditActivity::class.java)
+            startActivity(intent)
+        }
+
+        val deletePoiButton = Button(this)
+        deletePoiButton.text = getString(R.string.delete_poi)
+        deletePoiButton.setPadding(24, 8, 24, 16)
+        mainLinearLayout.addView(deletePoiButton)
+
+        deletePoiButton.setOnClickListener {
+            PoiManager.deletePoi(curPoi)
+            Snackbar.make(binding.root, "Poi Deleted, Please Re-open App.", Snackbar.LENGTH_SHORT)
+                .show()
+        }
     }
 
     private fun postReview() {
@@ -130,7 +150,11 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
             updateReviews()
             Snackbar.make(binding.root, "Review Posted!", Snackbar.LENGTH_SHORT).show()
         } else {
-            Snackbar.make(binding.root, "You must be logged in to post a review", Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(
+                binding.root,
+                "You must be logged in to post a review",
+                Snackbar.LENGTH_SHORT
+            ).show()
         }
     }
 

@@ -46,12 +46,6 @@ class ProfileFragment : Fragment() {
             PoiManager.curPoi = null
             this.startActivity(intent)
         }
-
-        view?.findViewById<Button>(R.id.btn_edit_poi)!!.setOnClickListener {
-            val intent = Intent(requireContext(), PoiEditActivity::class.java)
-            //PoiManager.curPoi = PoiManager.get
-            this.startActivity(intent)
-        }
     }
 
     override fun onResume() {

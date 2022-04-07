@@ -17,7 +17,7 @@ class PoiModel {
     var poiPoints: Int = 0
     var imgUrl: String =
         "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/1024px-Question_mark_%28black%29.svg.png";
-    private var poiRangeInM: Int = 100
+    var poiRangeInM: Int = 100
 
     constructor(
         poiId:String,

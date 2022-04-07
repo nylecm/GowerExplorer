@@ -14,6 +14,7 @@ import java.util.*
 
 object PoiManager {
     var pois: Vector<PoiModel> = Vector()
+    val TAG: String = "PoiManager"
     var curPoi: PoiModel? = null
 
     init {
@@ -23,7 +24,7 @@ object PoiManager {
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    Log.d("PoiManager", "${document.id} => ${document.data}")
+                    Log.d(TAG, "${document.id} => ${document.data}")
                     this.pois.add(
                         PoiModel(
                             document.id,
@@ -37,13 +38,25 @@ object PoiManager {
                             document.data["img"].toString()
                         )
                     )
-                    Log.d("PoiManager", "ADDED: ${document.id} => ${document.data}")
+                    Log.d(TAG, "ADDED: ${document.id} => ${document.data}")
                 }
             }
             .addOnFailureListener { exception ->
-                Log.d("PoiManager", "Error getting documents: ", exception)
+                Log.d(TAG, "Error getting documents: ", exception)
             }
     }
+
+    fun deletePoi(poi: PoiModel) {
+        pois.remove(poi)
+
+        val db = Firebase.firestore
+        db.collection("poi").document(poi.poiId)
+            .delete()
+            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
+            .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+    }
+}
+
 /*
      fun loadData(context: Context) {
     val db = Firebase.firestore
@@ -138,4 +151,4 @@ object PoiManager {
         }
     }
 */
-}
+

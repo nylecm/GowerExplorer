@@ -156,4 +156,5 @@
     <string name="number_of_points">Number Of Points</string>
     <string name="discovery_range">Discovery Range</string>
     <string name="submit">Submit</string>
+    <string name="id_of_poi_to_edit_or_delete">ID of PoI To Edit or Delete</string>
 </resources>
