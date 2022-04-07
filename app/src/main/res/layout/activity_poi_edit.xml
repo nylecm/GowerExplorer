@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.profile.ProfileFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:id="@+id/txt_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/title"
+            android:inputType="text"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="49dp" />
+
+        <EditText
+            android:id="@+id/txt_img_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/image_url"
+            android:inputType="textUri"
+            tools:layout_editor_absoluteX="47dp"
+            tools:layout_editor_absoluteY="103dp" />
+
+        <EditText
+            android:id="@+id/txt_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/description"
+            android:inputType="textMultiLine"
+            tools:layout_editor_absoluteX="47dp"
+            tools:layout_editor_absoluteY="152dp" />
+
+        <EditText
+            android:id="@+id/txt_directions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/directions"
+            android:inputType="textMultiLine"
+            tools:layout_editor_absoluteX="55dp"
+            tools:layout_editor_absoluteY="219dp" />
+
+        <EditText
+            android:id="@+id/txt_poi_lat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/poi_latitude"
+            android:inputType="number"
+            tools:layout_editor_absoluteX="53dp"
+            tools:layout_editor_absoluteY="286dp" />
+
+        <EditText
+            android:id="@+id/txt_poi_long"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/poi_longitude"
+            android:inputType="number"
+            tools:layout_editor_absoluteX="60dp"
+            tools:layout_editor_absoluteY="344dp" />
+
+        <EditText
+            android:id="@+id/txt_poi_parking_lat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/parking_latitude"
+            android:inputType="number"
+            tools:layout_editor_absoluteX="60dp"
+            tools:layout_editor_absoluteY="410dp" />
+
+        <EditText
+            android:id="@+id/txt_poi_parking_long"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/parking_longitude"
+            android:inputType="number"
+            tools:layout_editor_absoluteX="60dp"
+            tools:layout_editor_absoluteY="464dp" />
+
+        <EditText
+            android:id="@+id/txt_number_of_points"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/number_of_points"
+            android:inputType="number"
+            tools:layout_editor_absoluteX="60dp"
+            tools:layout_editor_absoluteY="410dp" />
+
+        <EditText
+            android:id="@+id/txt_discovery_range"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/discovery_range"
+            android:inputType="number"
+            tools:layout_editor_absoluteX="60dp"
+            tools:layout_editor_absoluteY="464dp" />
+
+        <Button
+            android:id="@+id/btn_submit_poi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/discovery_range"
+            android:text="@string/submit"
+            tools:layout_editor_absoluteX="119dp"
+            tools:layout_editor_absoluteY="464dp" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

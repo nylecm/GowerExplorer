@@ -12,7 +12,10 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.example.gowerexplorerapp3.R
 import com.example.gowerexplorerapp3.controller.MyUserManager
+import com.example.gowerexplorerapp3.controller.PoiManager
+import com.example.gowerexplorerapp3.ui.PoiEditActivity
 import com.example.gowerexplorerapp3.ui.logreg.LogInActivity
+import com.example.gowerexplorerapp3.ui.logreg.RegisterActivity
 
 class ProfileFragment : Fragment() {
 
@@ -32,8 +35,23 @@ class ProfileFragment : Fragment() {
         btnLogInOut = view?.findViewById(R.id.btn_log_in_out)!!
         if (MyUserManager.curUser != null && MyUserManager.curUser!!.isAdmin) {
             view?.findViewById<CardView>(R.id.card_admin)!!.isVisible = true
+            adminSetup()
         }
         super.onStart()
+    }
+
+    private fun adminSetup() {
+        view?.findViewById<Button>(R.id.btn_create_poi)!!.setOnClickListener {
+            val intent = Intent(requireContext(), PoiEditActivity::class.java)
+            PoiManager.curPoi = null
+            this.startActivity(intent)
+        }
+
+        view?.findViewById<Button>(R.id.btn_edit_poi)!!.setOnClickListener {
+            val intent = Intent(requireContext(), PoiEditActivity::class.java)
+            //PoiManager.curPoi = PoiManager.get
+            this.startActivity(intent)
+        }
     }
 
     override fun onResume() {

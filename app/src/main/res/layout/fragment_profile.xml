@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp">
@@ -76,13 +76,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/admin_only"/>
+                    android:text="@string/admin_only" />
 
                 <Button
                     android:id="@+id/btn_create_poi"
-                    android:text="@string/create_a_new_poi"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:text="@string/create_a_new_poi" />
 
                 <EditText
                     android:id="@+id/txt_target_poi_to_modify"
@@ -116,8 +116,6 @@
                         app:layout_constraintTop_toTopOf="@+id/btn_edit_poi" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>

@@ -145,4 +145,15 @@
     <string name="delete_poi">Delete Poi</string>
     <string name="edit_poi">Edit Poi</string>
     <string name="admin_only">Admin Only:</string>
+    <string name="title">Title</string>
+    <string name="image_url">Image URL</string>
+    <string name="description">Description</string>
+    <string name="directions">Directions</string>
+    <string name="poi_latitude">PoI Latitude</string>
+    <string name="poi_longitude">PoI Longitude</string>
+    <string name="parking_latitude">Parking Latitude</string>
+    <string name="parking_longitude">Parking Longitude</string>
+    <string name="number_of_points">Number Of Points</string>
+    <string name="discovery_range">Discovery Range</string>
+    <string name="submit">Submit</string>
 </resources>
