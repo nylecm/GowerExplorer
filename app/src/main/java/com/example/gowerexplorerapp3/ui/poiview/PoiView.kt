@@ -40,7 +40,6 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
     private lateinit var btnSpeak: Button
     private lateinit var reviewHolder: LinearLayout
     private lateinit var mainLinearLayout: LinearLayout
-    private val curPoi = PoiManager.curPoi!!
     var lastUserLocation: GeoPoint = GeoPoint(0.0, 0.0)
     private var tts: TextToSpeech? = null
 
@@ -56,24 +55,24 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
         setSupportActionBar(findViewById(R.id.toolbar))
         binding.toolbarLayout.title = title
 
-        binding.toolbarLayout.title = curPoi.title
+        binding.toolbarLayout.title = PoiManager.curPoi!!.title
 
         Picasso.get()
-            .load(curPoi.imgUrl)
+            .load(PoiManager.curPoi!!.imgUrl)
             .resize(1080, 600)
             .centerCrop()
             .into(findViewById<ImageView>(R.id.mainImage));
 
-        findViewById<TextView>(R.id.textview).text = curPoi.description
+        findViewById<TextView>(R.id.textview).text = PoiManager.curPoi!!.description
 
         btnSpeak = findViewById(R.id.btn_speak)
         btnSpeak.isEnabled = false;
         tts = TextToSpeech(this, this)
 
-        btnSpeak.setOnClickListener { speakOut(curPoi.description) }
+        btnSpeak.setOnClickListener { speakOut(PoiManager.curPoi!!.description) }
 
         val parkingLocationStr =
-            curPoi.parkingLocation.latitude.toString() + ", " + curPoi.parkingLocation.longitude.toString()
+            PoiManager.curPoi!!.parkingLocation.latitude.toString() + ", " + PoiManager.curPoi!!.parkingLocation.longitude.toString()
 
         findViewById<Button>(R.id.navigateTo).setOnClickListener {
             val gmmIntentUri =
@@ -82,11 +81,11 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
             mapIntent.setPackage("com.google.android.apps.maps")
             startActivity(mapIntent)
         }
-        findViewById<TextView>(R.id.txtDirections).text = curPoi.directions
+        findViewById<TextView>(R.id.txtDirections).text = PoiManager.curPoi!!.directions
 
         findViewById<Button>(R.id.btn_check_in).setOnClickListener {
             getLastLocation()
-            if (curPoi.isCloseEnoughToDiscover(this.lastUserLocation)) {
+            if (PoiManager.curPoi!!.isCloseEnoughToDiscover(this.lastUserLocation)) {
                 Log.i(TAG, "Close Enough")
             } else {
                 Log.i(TAG, "Not Close Enough")
@@ -120,7 +119,7 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
         mainLinearLayout.addView(deletePoiButton)
 
         deletePoiButton.setOnClickListener {
-            PoiManager.deletePoi(curPoi)
+            PoiManager.deletePoi(PoiManager.curPoi!!)
             Snackbar.make(binding.root, "Poi Deleted, Please Re-open App.", Snackbar.LENGTH_SHORT)
                 .show()
         }

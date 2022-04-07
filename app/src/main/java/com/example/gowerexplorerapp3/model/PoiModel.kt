@@ -46,6 +46,35 @@ class PoiModel {
         this.imgUrl = imgUrl
     }
 
+    constructor(
+        poiId:String,
+        title: String,
+        description: String,
+        location: GeoPoint,
+        parkingLocation: GeoPoint,
+        directions: String,
+        poiType: PoiType,
+        poiPoints: Int,
+        imgUrl: String,
+        poiRangeInM: Int
+    ) {
+        this.poiId = poiId
+        this.title = title
+        this.description = description
+        this.location = location
+        this.parkingLocation = parkingLocation
+        this.directions = directions
+        if (poiType.equals("")) {
+            this.poiType = poiType
+        } else {
+            this.poiType = PoiType.MISC
+        }
+        this.poiType = poiType
+        this.poiPoints = poiPoints
+        this.imgUrl = imgUrl
+        this.poiRangeInM = poiRangeInM
+    }
+
     enum class PoiType(val value: Int) {
         BEACH(0),
         NATURE(1),

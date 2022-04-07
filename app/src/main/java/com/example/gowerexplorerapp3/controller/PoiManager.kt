@@ -55,6 +55,55 @@ object PoiManager {
             .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
             .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
     }
+
+    fun addPoi(
+        poiId: String,
+        title: String,
+        imageUrl: String,
+        description: String,
+        directions: String,
+        poiLatitude: Double,
+        poiLongitude: Double,
+        poiParkingLatitude: Double,
+        poiParkingLongitude: Double,
+        numberOfPoints: Int,
+        discoveryRange: Int
+    ) {
+        val editedPoi = PoiModel(
+            poiId,
+            title,
+            description,
+            GeoPoint(poiLatitude, poiLongitude),
+            GeoPoint(poiParkingLatitude, poiParkingLongitude),
+            directions,
+            PoiModel.PoiType.BEACH,
+            numberOfPoints,
+            imageUrl,
+            discoveryRange
+        ) // todo support for poi type
+        curPoi = editedPoi
+
+        val db = Firebase.firestore
+
+        db.collection("poi")
+            .document(poiId)
+            .set(editedPoi)
+    }
+
+    fun addPoi(
+        txtTitle: String,
+        txtImageUrl: String,
+        txtDescription: String,
+        txtDirections: String,
+        txtPoiLatitude: Double,
+        txtPoiLongitude: Double,
+        txtPoiParkingLatitude: Double,
+        txtPoiParkingLongitude: Double,
+        txtNumberOfPoints: Int,
+        txtDiscoveryRange: Int,
+    ) {
+
+    }
 }
 
 /*

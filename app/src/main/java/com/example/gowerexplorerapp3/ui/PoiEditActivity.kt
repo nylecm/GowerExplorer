@@ -2,7 +2,6 @@ package com.example.gowerexplorerapp3.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import android.widget.Button
 import android.widget.EditText
 import com.example.gowerexplorerapp3.R
@@ -47,6 +46,27 @@ class PoiEditActivity : AppCompatActivity() {
         if (PoiManager.curPoi != null) {
             isEditing = true
             fillWithPoiData()
+        }
+
+        btnSubmit.setOnClickListener {
+            if (isEditing) {
+                PoiManager.deletePoi(PoiManager.curPoi!!)
+                PoiManager.addPoi(
+                    PoiManager.curPoi!!.poiId,
+                    txtTitle.text.toString(),
+                    txtImageUrl.text.toString(),
+                    txtDescription.text.toString(),
+                    txtDirections.text.toString(),
+                    txtPoiLatitude.text.toString().toDouble(),
+                    txtPoiLongitude.text.toString().toDouble(),
+                    txtPoiParkingLatitude.text.toString().toDouble(),
+                    txtPoiParkingLongitude.text.toString().toDouble(),
+                    txtNumberOfPoints.text.toString().toInt(),
+                    txtDiscoveryRange.text.toString().toInt()
+                )
+            } else {
+
+            }
         }
     }
 
