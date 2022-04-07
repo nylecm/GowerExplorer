@@ -50,12 +50,6 @@ class MyItemRecyclerViewAdapter(
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.getContext(), PoiView::class.java)
             PoiManager.curPoi = item
-//            intent.putExtra("title", item.title)
-//            intent.putExtra("description", item.description)
-//            intent.putExtra("imgUrl", item.imgUrl)
-//            intent.putExtra("parkingLocation", parkingLocation)
-//            intent.putExtra("directions", item.directions)
-
             holder.itemView.context.startActivity(intent)
         }
     }

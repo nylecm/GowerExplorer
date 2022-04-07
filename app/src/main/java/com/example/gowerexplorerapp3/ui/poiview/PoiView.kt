@@ -37,6 +37,7 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
     private lateinit var binding: ActivityPoiViewBinding
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
     private lateinit var btnSpeak: Button
+    private lateinit var reviewHolder: LinearLayout
     private val curPoi = PoiManager.curPoi!!
     var lastUserLocation: GeoPoint = GeoPoint(0.0, 0.0)
     private var tts: TextToSpeech? = null
@@ -95,6 +96,7 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
             }
         }
 
+        reviewHolder = findViewById(R.id.ll_reviews)
         populateReviews()
     }
 
@@ -110,14 +112,30 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
                     txtNoReviews.text = getString(R.string.no_reviews)
                     findViewById<LinearLayout>(R.id.ll_reviews).addView(txtNoReviews)
                 } else {
+                    var totalStars = 0
+
                     for (document in documents) { // fill up reviews
-                        val txtReview = TextView(this)
-                        txtReview.text = document["content"].toString()
-                        findViewById<LinearLayout>(R.id.ll_reviews).addView(txtReview)
+                        val txtReviewTitle = TextView(this)
+                        txtReviewTitle.text = document["title"].toString() + ", by: " + document["userId"].toString()
+                        reviewHolder.addView(txtReviewTitle)
+
+                        val stars = (document["stars"] as Long).toInt()
+                        totalStars += stars
+
+                        val txtReviewStars = TextView(this)
+                        txtReviewStars.text = "Rated: $stars/5"
+                        reviewHolder.addView(txtReviewStars)
+
+                        val txtReviewContent = TextView(this)
+                        txtReviewContent.text = document["content"].toString()
+                        reviewHolder.addView(txtReviewContent)
 
 
                         Log.d(TAG, "${document.id} => ${document.data}")
                     }
+
+                    var averageStars = totalStars / documents.size()
+                    // todo display stars
                 }
             }
             .addOnFailureListener { exception ->

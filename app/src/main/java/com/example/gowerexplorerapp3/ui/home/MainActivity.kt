@@ -1,16 +1,14 @@
 package com.example.gowerexplorerapp3.ui.home
 
 import android.os.Bundle
-import android.widget.Toolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.customview.widget.Openable
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.gowerexplorerapp3.R
-import com.example.gowerexplorerapp3.controller.CurUserManager
+import com.example.gowerexplorerapp3.controller.MyUserManager
 import com.example.gowerexplorerapp3.controller.PoiManager
 import com.example.gowerexplorerapp3.databinding.ActivityMainBinding
 
@@ -21,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        CurUserManager
+        MyUserManager
         PoiManager // initialises poi data
 
         binding = ActivityMainBinding.inflate(layoutInflater)

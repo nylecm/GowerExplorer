@@ -1,13 +1,12 @@
 package com.example.gowerexplorerapp3.ui.logreg
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import com.example.gowerexplorerapp3.R
-import com.example.gowerexplorerapp3.controller.CurUserManager
+import com.example.gowerexplorerapp3.controller.MyUserManager
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var emailInput: EditText
@@ -38,7 +37,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun update() {
-        val currentUser = CurUserManager.mAuth.currentUser
+        val currentUser = MyUserManager.mAuth.currentUser
         val currentEmail = currentUser?.email
         if (currentEmail == null) {
             msgView.text = "Not logged in!"
@@ -48,12 +47,12 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun registerClick() {
-        CurUserManager.mAuth.createUserWithEmailAndPassword(
+        MyUserManager.mAuth.createUserWithEmailAndPassword(
             emailInput.text.toString(),
             passwordInput.text.toString()
         ).addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
-                CurUserManager.registerNewUser(usernameInput.text.toString())
+                MyUserManager.registerNewUser(usernameInput.text.toString())
             } else {
                 // TODO...
             }

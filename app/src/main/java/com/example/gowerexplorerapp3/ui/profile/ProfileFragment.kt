@@ -9,7 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.gowerexplorerapp3.R
-import com.example.gowerexplorerapp3.controller.CurUserManager
+import com.example.gowerexplorerapp3.controller.MyUserManager
 import com.example.gowerexplorerapp3.ui.logreg.LogInActivity
 
 class ProfileFragment : Fragment() {
@@ -35,7 +35,7 @@ class ProfileFragment : Fragment() {
         super.onResume()
 
         // No user is logged in:
-        if (CurUserManager.curUser == null) {
+        if (MyUserManager.curUser == null) {
             displayLoggedOutUI()
         } else { // A user is already logged in:
             displayLoggedInUI()
@@ -52,11 +52,11 @@ class ProfileFragment : Fragment() {
     }
 
     fun displayLoggedInUI() {
-        txtHelloUsername.text = "Hello ${CurUserManager.curUser?.userName}"
+        txtHelloUsername.text = "Hello ${MyUserManager.curUser?.userName}"
         btnLogInOut.text = getString(R.string.log_out)
 
         btnLogInOut.setOnClickListener {
-            CurUserManager.signOut()
+            MyUserManager.signOut()
             displayLoggedOutUI()
             // TODO sign out code here
         }

@@ -7,7 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import com.example.gowerexplorerapp3.R
-import com.example.gowerexplorerapp3.controller.CurUserManager
+import com.example.gowerexplorerapp3.controller.MyUserManager
 
 class LogInActivity : AppCompatActivity() {
     private lateinit var emailInput: EditText
@@ -42,7 +42,7 @@ class LogInActivity : AppCompatActivity() {
     }
 
     private fun update() {
-        val currentUser = CurUserManager.mAuth.currentUser
+        val currentUser = MyUserManager.mAuth.currentUser
         val currentEmail = currentUser?.email
         if (currentEmail == null) {
             msgView.text = "Not logged in!"
@@ -52,12 +52,12 @@ class LogInActivity : AppCompatActivity() {
     }
 
     private fun loginClick () {
-        CurUserManager.mAuth.signInWithEmailAndPassword(
+        MyUserManager.mAuth.signInWithEmailAndPassword(
             emailInput.text.toString(),
             passwordInput.text.toString()
         ).addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
-                CurUserManager.logInUser()
+                MyUserManager.logInUser()
                 finish() // goes back
             } else {
                 msgView.text = getString(R.string.incorrect_login_details)
@@ -68,7 +68,7 @@ class LogInActivity : AppCompatActivity() {
     private fun registerClick() {
         val intent = Intent(this, RegisterActivity::class.java)
         this.startActivity(intent)
-//        CurUserManager.mAuth.createUserWithEmailAndPassword(
+//        MyUserManager.mAuth.createUserWithEmailAndPassword(
 //            emailInput.text.toString(),
 //            passwordInput.text.toString()
 //        ).addOnCompleteListener(this) { task ->
@@ -77,7 +77,7 @@ class LogInActivity : AppCompatActivity() {
 //                // TODO...
 //                val firebaseUser: FirebaseUser = task.result.user!!
 //                update()
-//                val user = UserModel(CurUserManager.mAuth)
+//                val user = UserModel(MyUserManager.mAuth)
 //
 //            } else {
 //                // TODO...

@@ -9,8 +9,8 @@ import com.google.firebase.firestore.auth.User
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-object CurUserManager {
-    private const val TAG: String = "CurUserManager"
+object MyUserManager {
+    private const val TAG: String = "MyUserManager"
     var mAuth = FirebaseAuth.getInstance()
     var curUser: UserModel? = null
 
