@@ -1,6 +1,9 @@
 package com.example.gowerexplorerapp3.controller
 
 import android.util.Log
+import android.widget.LinearLayout
+import android.widget.TextView
+import com.example.gowerexplorerapp3.R
 import com.example.gowerexplorerapp3.model.PoiModel
 import com.example.gowerexplorerapp3.model.UserModel
 import com.google.firebase.auth.FirebaseAuth
@@ -28,7 +31,11 @@ object MyUserManager {
             .addOnSuccessListener { document ->
                 if (document != null) {
                     Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                    curUser = UserModel(document["userName"] as String, document["admin"] as Boolean, ((document.data?.get("numberOfPoints")) as Long).toInt())
+                    curUser = UserModel(
+                        document["userName"] as String,
+                        document["admin"] as Boolean,
+                        ((document.data?.get("numberOfPoints")) as Long).toInt()
+                    )
                 } else {
                     Log.d(TAG, "No such document")
                 }

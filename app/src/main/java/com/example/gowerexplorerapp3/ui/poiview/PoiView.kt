@@ -20,6 +20,7 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.example.gowerexplorerapp3.R
+import com.example.gowerexplorerapp3.controller.MyUserManager
 import com.example.gowerexplorerapp3.controller.PoiManager
 import com.example.gowerexplorerapp3.databinding.ActivityPoiViewBinding
 import com.google.android.gms.location.*
@@ -115,9 +116,31 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
                     var totalStars = 0
 
                     for (document in documents) { // fill up reviews
+                        var userName = ""
+                        val uid: String = document["userId"].toString()
+
+                        // Username lookup happens async hence we need to out dummy data in first.
                         val txtReviewTitle = TextView(this)
-                        txtReviewTitle.text = document["title"].toString() + ", by: " + document["userId"].toString()
+                        txtReviewTitle.text =
+                            "${document["title"].toString()}, by: $userName"
                         reviewHolder.addView(txtReviewTitle)
+
+                        db.collection("users").document(uid)
+                            .get()
+                            .addOnSuccessListener { documentUser ->
+                                userName = documentUser["userName"] as String
+                                Log.d(TAG, "username found: '$userName' for user: '$uid'")
+                                txtReviewTitle.text =
+                                    "${document["title"].toString()}, by: $userName"
+                            }
+                            .addOnFailureListener { exception ->
+                                Log.d(TAG, "no username found, for user: '$uid'")
+                                txtReviewTitle.text =
+                                    "${document["title"].toString()}, by: N/A"
+
+                            }
+
+
 
                         val stars = (document["stars"] as Long).toInt()
                         totalStars += stars
@@ -141,7 +164,6 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
             .addOnFailureListener { exception ->
                 Log.w(TAG, "Error getting documents: ", exception)
             }
-
     }
 
     private fun speakOut(text: String) {
