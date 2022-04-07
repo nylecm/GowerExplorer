@@ -10,6 +10,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Looper
 import android.provider.Settings
+import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
@@ -24,13 +25,18 @@ import com.google.android.gms.location.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.firestore.GeoPoint
 import com.squareup.picasso.Picasso
+import org.w3c.dom.Text
+import java.util.*
 
-class PoiView : AppCompatActivity() {
+class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private lateinit var binding: ActivityPoiViewBinding
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
+    private lateinit var btnSpeak: Button
     private val curPoi = PoiManager.curPoi!!
     var lastUserLocation: GeoPoint = GeoPoint(0.0, 0.0)
+    private var tts: TextToSpeech? = null
+
     // TODO add location itegration
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,6 +64,12 @@ class PoiView : AppCompatActivity() {
 
         findViewById<TextView>(R.id.textview).text = curPoi.description
 
+        btnSpeak = findViewById<Button>(R.id.btn_speak)
+        btnSpeak.isEnabled = false;
+        tts = TextToSpeech(this, this)
+
+        btnSpeak.setOnClickListener { speakOut(curPoi.description) }
+
         val parkingLocationStr =
             curPoi.parkingLocation.latitude.toString() + ", " + curPoi.parkingLocation.longitude.toString()
 
@@ -78,6 +90,19 @@ class PoiView : AppCompatActivity() {
                 Log.i("Poi View", "Not Close Enough")
             }
         }
+    }
+
+    private fun speakOut(text: String) {
+        tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null, "")
+    }
+
+    public override fun onDestroy() {
+        // Shutdown TTS
+        if (tts != null) {
+            tts!!.stop()
+            tts!!.shutdown()
+        }
+        super.onDestroy()
     }
 
     private fun getLastLocation() {
@@ -171,5 +196,21 @@ class PoiView : AppCompatActivity() {
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(
             LocationManager.NETWORK_PROVIDER
         )
+    }
+
+    override fun onInit(status: Int) {
+        if (status == TextToSpeech.SUCCESS) {
+            // set US English as language for tts
+            val result = tts!!.setLanguage(Locale.UK)
+
+            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Log.e("TTS","The Language specified is not supported!")
+            } else {
+                btnSpeak.isEnabled = true
+            }
+
+        } else {
+            Log.e("TTS", "Initilization Failed!")
+        }
     }
 }
