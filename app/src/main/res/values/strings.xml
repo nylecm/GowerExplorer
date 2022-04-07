@@ -157,4 +157,12 @@
     <string name="discovery_range">Discovery Range</string>
     <string name="submit">Submit</string>
     <string name="id_of_poi_to_edit_or_delete">ID of PoI To Edit or Delete</string>
+    <string name="poi_type">Poi Type</string>
+    <string-array name="poi_types">
+        <item>Beach</item>
+        <item>Nature</item>
+        <item>Landmark</item>
+        <item>Commerce</item>
+        <item>Misc.</item>
+    </string-array>
 </resources>

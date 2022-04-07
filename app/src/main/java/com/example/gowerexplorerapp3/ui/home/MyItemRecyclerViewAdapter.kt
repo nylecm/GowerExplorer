@@ -37,7 +37,7 @@ class MyItemRecyclerViewAdapter(
         holder.poiNameView.text = item.title
         //holder.thumbnail.setImageResource(item.img)
         Picasso.get()
-            .load(item.imgUrl)
+            .load(item.img)
             .resize(300, 200)
             .centerCrop()
             .into(holder.thumbnail);

@@ -26,6 +26,18 @@
             tools:layout_editor_absoluteX="44dp"
             tools:layout_editor_absoluteY="49dp" />
 
+        <Spinner
+            android:id="@+id/spinner_poi_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:tooltipText="@string/poi_type"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:textColorHint="#757575"
+            tools:layout_editor_absoluteX="60dp"
+            tools:layout_editor_absoluteY="410dp" />
+
         <EditText
             android:id="@+id/txt_img_url"
             android:layout_width="match_parent"

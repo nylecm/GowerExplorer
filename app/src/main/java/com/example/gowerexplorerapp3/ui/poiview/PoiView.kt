@@ -6,7 +6,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
-import android.media.Rating
 import android.net.Uri
 import android.os.Bundle
 import android.os.Looper
@@ -29,7 +28,6 @@ import com.google.firebase.firestore.GeoPoint
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
-import org.w3c.dom.Text
 import java.util.*
 
 class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
@@ -58,7 +56,7 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
         binding.toolbarLayout.title = PoiManager.curPoi!!.title
 
         Picasso.get()
-            .load(PoiManager.curPoi!!.imgUrl)
+            .load(PoiManager.curPoi!!.img)
             .resize(1080, 600)
             .centerCrop()
             .into(findViewById<ImageView>(R.id.mainImage));

@@ -2,23 +2,26 @@ package com.example.gowerexplorerapp3.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import com.example.gowerexplorerapp3.R
 import com.example.gowerexplorerapp3.controller.PoiManager
 
 class PoiEditActivity : AppCompatActivity() {
-    lateinit var txtTitle: EditText
-    lateinit var txtImageUrl: EditText
-    lateinit var txtDescription: EditText
-    lateinit var txtDirections: EditText
-    lateinit var txtPoiLatitude: EditText
-    lateinit var txtPoiLongitude: EditText
-    lateinit var txtPoiParkingLatitude: EditText
-    lateinit var txtPoiParkingLongitude: EditText
-    lateinit var txtNumberOfPoints: EditText
-    lateinit var txtDiscoveryRange: EditText
-    lateinit var btnSubmit: Button
+    private lateinit var txtTitle: EditText
+    private lateinit var spinnerPoiType: Spinner
+    private lateinit var txtImageUrl: EditText
+    private lateinit var txtDescription: EditText
+    private lateinit var txtDirections: EditText
+    private lateinit var txtPoiLatitude: EditText
+    private lateinit var txtPoiLongitude: EditText
+    private lateinit var txtPoiParkingLatitude: EditText
+    private lateinit var txtPoiParkingLongitude: EditText
+    private lateinit var txtNumberOfPoints: EditText
+    private lateinit var txtDiscoveryRange: EditText
+    private lateinit var btnSubmit: Button
 
 
     var isEditing: Boolean = false
@@ -42,6 +45,19 @@ class PoiEditActivity : AppCompatActivity() {
         txtNumberOfPoints = findViewById(R.id.txt_number_of_points)
         txtDiscoveryRange = findViewById(R.id.txt_discovery_range)
         btnSubmit = findViewById(R.id.btn_submit_poi)
+
+        spinnerPoiType = findViewById(R.id.spinner_poi_type)
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.poi_types,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            spinnerPoiType.adapter = adapter
+        }
 
         if (PoiManager.curPoi != null) {
             isEditing = true
@@ -72,7 +88,7 @@ class PoiEditActivity : AppCompatActivity() {
 
     private fun fillWithPoiData() {
         txtTitle.setText(PoiManager.curPoi!!.title)
-        txtImageUrl.setText(PoiManager.curPoi!!.imgUrl)
+        txtImageUrl.setText(PoiManager.curPoi!!.img)
         txtDescription.setText(PoiManager.curPoi!!.description)
         txtDirections.setText(PoiManager.curPoi!!.directions)
         txtPoiLatitude.setText(PoiManager.curPoi!!.location.latitude.toString())
