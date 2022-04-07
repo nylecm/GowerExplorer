@@ -141,4 +141,8 @@
     <string name="no_reviews">No Reviews</string>
     <string name="review_title_hint">Review Title</string>
     <string name="_0_reviews_dummy">0 Reviews</string>
+    <string name="create_a_new_poi">Create a New PoI</string>
+    <string name="delete_poi">Delete Poi</string>
+    <string name="edit_poi">Edit Poi</string>
+    <string name="admin_only">Admin Only:</string>
 </resources>

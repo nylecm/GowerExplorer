@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.example.gowerexplorerapp3.R
 import com.example.gowerexplorerapp3.controller.MyUserManager
@@ -28,6 +30,9 @@ class ProfileFragment : Fragment() {
     override fun onStart() {
         txtHelloUsername = view?.findViewById(R.id.txt_hello_username)!!
         btnLogInOut = view?.findViewById(R.id.btn_log_in_out)!!
+        if (MyUserManager.curUser != null && MyUserManager.curUser!!.isAdmin) {
+            view?.findViewById<CardView>(R.id.card_admin)!!.isVisible = true
+        }
         super.onStart()
     }
 
