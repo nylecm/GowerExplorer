@@ -42,9 +42,9 @@ class ProfileFragment : Fragment() {
 
     private fun adminSetup() {
         view?.findViewById<Button>(R.id.btn_create_poi)!!.setOnClickListener {
-            val intent = Intent(requireContext(), PoiEditActivity::class.java)
             PoiManager.curPoi = null
-            this.startActivity(intent)
+            val intent = Intent(requireContext(), PoiEditActivity::class.java)
+            requireContext().startActivity(intent)
         }
     }
 

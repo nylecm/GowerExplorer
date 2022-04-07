@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.*
 import com.example.gowerexplorerapp3.R
 import com.example.gowerexplorerapp3.controller.PoiManager
+import com.google.android.material.snackbar.Snackbar
 
 class PoiEditActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private lateinit var txtTitle: EditText
@@ -80,8 +81,25 @@ class PoiEditActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
                     txtNumberOfPoints.text.toString().toInt(),
                     txtDiscoveryRange.text.toString().toInt()
                 )
+                Snackbar.make(it, "Poi Updated, Please Re-open App to See Effect.", Snackbar.LENGTH_LONG)
+                    .show()
             } else {
-
+                // Not editing
+                PoiManager.addPoi(
+                    curSelectedPos,
+                    txtTitle.text.toString(),
+                    txtImageUrl.text.toString(),
+                    txtDescription.text.toString(),
+                    txtDirections.text.toString(),
+                    txtPoiLatitude.text.toString().toDouble(),
+                    txtPoiLongitude.text.toString().toDouble(),
+                    txtPoiParkingLatitude.text.toString().toDouble(),
+                    txtPoiParkingLongitude.text.toString().toDouble(),
+                    txtNumberOfPoints.text.toString().toInt(),
+                    txtDiscoveryRange.text.toString().toInt()
+                )
+                Snackbar.make(it, "Poi Created, Please Re-open App to See Effect.", Snackbar.LENGTH_LONG)
+                    .show()
             }
         }
     }

@@ -101,18 +101,33 @@ object PoiManager {
     }
 
     fun addPoi(
-        txtTitle: String,
-        txtImageUrl: String,
-        txtDescription: String,
-        txtDirections: String,
-        txtPoiLatitude: Double,
-        txtPoiLongitude: Double,
-        txtPoiParkingLatitude: Double,
-        txtPoiParkingLongitude: Double,
-        txtNumberOfPoints: Int,
-        txtDiscoveryRange: Int,
+        poiType: Int,
+        title: String,
+        imageUrl: String,
+        description: String,
+        directions: String,
+        poiLatitude: Double,
+        poiLongitude: Double,
+        poiParkingLatitude: Double,
+        poiParkingLongitude: Double,
+        numberOfPoints: Int,
+        discoveryRange: Int
     ) {
+        val db = Firebase.firestore
+        val id = title.hashCode() + description.hashCode() + directions.hashCode()
 
+        db.collection("poi")
+            .document(id.toString())
+            .set(
+                mapOf("description" to description,
+                    "directions" to directions,
+                    "img" to imageUrl,
+                    "location" to GeoPoint(poiLatitude, poiLongitude),
+                    "parkingLocation" to GeoPoint(poiParkingLatitude, poiParkingLongitude),
+                    "poiPoints" to numberOfPoints,
+                    "poiType" to poiType,
+                    "title" to title)
+            )
     }
 }
 
