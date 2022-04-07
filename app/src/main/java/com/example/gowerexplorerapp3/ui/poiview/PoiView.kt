@@ -6,16 +6,14 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
+import android.media.Rating
 import android.net.Uri
 import android.os.Bundle
 import android.os.Looper
 import android.provider.Settings
 import android.speech.tts.TextToSpeech
 import android.util.Log
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -101,9 +99,37 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
         reviewHolder = findViewById(R.id.ll_reviews)
 
         findViewById<Button>(R.id.btn_post_review).setOnClickListener {
-            //ReviewModel()
+            // check if user is logged in:
+            postReview()
+
         }
         populateReviews()
+    }
+
+    private fun postReview() {
+        if (MyUserManager.mAuth.currentUser != null) {
+            val reviewTitle: String =
+                findViewById<EditText>(R.id.txt_new_review_title).text.toString()
+            val reviewStars: Int = findViewById<RatingBar>(R.id.rating_review_new).numStars
+            val reviewContents: String =
+                findViewById<EditText>(R.id.txt_new_review_contents).text.toString()
+
+            val review = ReviewModel(
+                reviewTitle,
+                reviewStars,
+                reviewContents,
+                MyUserManager.mAuth.currentUser!!.uid,
+                PoiManager.curPoi!!.poiId
+            )
+
+            val db = Firebase.firestore
+
+            db.collection("reviews")
+                .document(review.hashCode().toString())
+                .set(review)
+        } else {
+
+        }
     }
 
     private fun populateReviews() {

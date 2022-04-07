@@ -143,6 +143,10 @@
                     android:maxLines="10"
                     android:minLines="1" />
 
+                <TextView
+                    android:id="@+id/txt_new_comment_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
                 <Button
                     android:id="@+id/btn_post_review"
@@ -167,7 +171,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
-                android:orientation="vertical"></LinearLayout>
+                android:orientation="vertical" />
         </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>

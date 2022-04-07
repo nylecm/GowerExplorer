@@ -1,19 +1,28 @@
 package com.example.gowerexplorerapp3.model
 
 class ReviewModel {
-    val titile: String
-    val userId: String
-    val content: String
-    val poiId: String
+    val title: String
     val stars: Int
+    val content: String
+    val userId: String
+    val poiId: String
 
-    constructor(titile: String, userId: String, content: String, poiId: String, stars: Int) {
-        this.titile = titile
-        this.userId = userId
-        this.content = content
-        this.poiId = poiId
+    constructor(
+        title: String,
+        stars: Int,
+        content: String,
+        userId: String,
+        poiId: String
+    ) {
+        this.title = title
         this.stars = stars
+        this.content = content
+        this.userId = userId
+        this.poiId = poiId
     }
 
+    override fun hashCode(): Int {
+        return title.hashCode() + userId.hashCode() + content.hashCode()
+    }
 
 }
