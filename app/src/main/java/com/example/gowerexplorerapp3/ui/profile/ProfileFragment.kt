@@ -6,12 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.gowerexplorerapp3.R
 import com.example.gowerexplorerapp3.controller.CurUserManager
 import com.example.gowerexplorerapp3.ui.logreg.LogInActivity
 
 class ProfileFragment : Fragment() {
+
+    lateinit var txtHelloUsername: TextView
+    lateinit var btnLogInOut: Button
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,26 +26,39 @@ class ProfileFragment : Fragment() {
     }
 
     override fun onStart() {
+        txtHelloUsername = view?.findViewById(R.id.txt_hello_username)!!
+        btnLogInOut = view?.findViewById(R.id.btn_log_in_out)!!
         super.onStart()
+    }
 
-        val btnLogInOut: Button = view?.findViewById(R.id.btn_log_in_out)!!
+    override fun onResume() {
+        super.onResume()
 
         // No user is logged in:
         if (CurUserManager.curUser == null) {
-            btnLogInOut.setOnClickListener {
-                val intent = Intent(requireContext(), LogInActivity::class.java)
-                requireContext().startActivity(intent)
-            }
+            displayLoggedOutUI()
         } else { // A user is already logged in:
-            btnLogInOut.text = getString(R.string.log_out)
-            btnLogInOut.setOnClickListener {
-                CurUserManager.signOut()
-                onStart()
-                // TODO sign out code here
-            }
+            displayLoggedInUI()
         }
+    }
 
+    fun displayLoggedOutUI() {
+        txtHelloUsername.text = getString(R.string.hello_guest_user)
+        btnLogInOut.text = getString(R.string.log_in)
+        btnLogInOut.setOnClickListener {
+            val intent = Intent(requireContext(), LogInActivity::class.java)
+            requireContext().startActivity(intent)
+        }
+    }
 
+    fun displayLoggedInUI() {
+        txtHelloUsername.text = "Hello ${CurUserManager.curUser?.userName}"
+        btnLogInOut.text = getString(R.string.log_out)
 
+        btnLogInOut.setOnClickListener {
+            CurUserManager.signOut()
+            displayLoggedOutUI()
+            // TODO sign out code here
+        }
     }
 }

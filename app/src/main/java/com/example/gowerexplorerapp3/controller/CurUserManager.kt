@@ -15,7 +15,9 @@ object CurUserManager {
     var curUser: UserModel? = null
 
     init {
-        logInUser()
+        if (mAuth.uid != null) {
+            logInUser()
+        }
     }
 
     fun logInUser() {
@@ -26,7 +28,7 @@ object CurUserManager {
             .addOnSuccessListener { document ->
                 if (document != null) {
                     Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                    curUser = UserModel(document["isAdmin"] as Boolean, ((document.data?.get("numberOfPoints")) as Long).toInt())
+                    curUser = UserModel(document["userName"] as String, document["isAdmin"] as Boolean, ((document.data?.get("numberOfPoints")) as Long).toInt())
                 } else {
                     Log.d(TAG, "No such document")
                 }
