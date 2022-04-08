@@ -50,11 +50,12 @@ class ProfileFragment : Fragment() {
         }
 
         val txtLeaderboard = view?.findViewById<TextView>(R.id.txt_leaderboard)!!
-
+        txtLeaderboard.text = ""
         val db = Firebase.firestore
         db.collection("users").get().addOnSuccessListener { documents ->
             for (user in documents) {
-                txtLeaderboard.text = "${txtLeaderboard.text} ${user["userName"]} , ${user["numberOfPoints"].toString()} points.\n\n"
+                txtLeaderboard.text =
+                    "${txtLeaderboard.text} ${user["userName"]} , ${user["numberOfPoints"].toString()} points.\n\n"
             }
         }
 
@@ -123,6 +124,9 @@ class ProfileFragment : Fragment() {
 
         val txtNumberOfPoints = view?.findViewById<TextView>(R.id.txt_number_of_points)!!
         txtNumberOfPoints.isVisible = true
-        txtNumberOfPoints.text = getString(R.string.you_have) + " " + MyUserManager.curUser!!.numberOfPoints + getString(R.string.points_end_sent)
+        txtNumberOfPoints.text =
+            getString(R.string.you_have) + " " + MyUserManager.curUser!!.numberOfPoints + getString(
+                R.string.points_end_sent
+            )
     }
 }

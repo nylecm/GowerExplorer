@@ -153,6 +153,8 @@ class PoiView : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private fun postReview() {
         if (MyUserManager.mAuth.currentUser != null) {
+            MyUserManager.creditUserPoints(5)
+
             val reviewTitle: String =
                 findViewById<EditText>(R.id.txt_new_review_title).text.toString()
             val reviewStars: Int = findViewById<RatingBar>(R.id.rating_review_new).numStars
