@@ -34,35 +34,67 @@
                     android:id="@+id/btn_log_in_out"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/text_margin"
+                    android:layout_margin="8pt"
                     tools:ignore="SpeakableTextPresentCheck" />
 
-                <Button
-                    android:id="@+id/btn_email_pois"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/text_margin"
-                    android:text="@string/email_list_of_explored_pois"
-                    android:visibility="invisible"/>
+
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/card_user_summary"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/leaderboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+
+            <LinearLayout
+                android:id="@+id/ll_leaderboard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin"
+                    android:text="@string/leaderboard"
+                    android:textColor="@color/pri_200"
+                    android:textSize="@dimen/feature_text_size" />
+
+                <TextView
+                    android:id="@+id/txt_leaderboard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:visibility="invisible">
 
             <LinearLayout
+                android:id="@+id/ll_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:id="@+id/txt_number_of_points"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="hello" />
+                    android:layout_margin="8pt"
+                    android:text="@string/hello_guest_user" />
+
+                <Button
+                    android:id="@+id/btn_email_pois"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8pt"
+                    android:text="@string/email_list_of_explored_pois" />
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>

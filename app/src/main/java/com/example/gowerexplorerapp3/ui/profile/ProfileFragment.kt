@@ -7,17 +7,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import androidx.core.view.marginLeft
 import androidx.fragment.app.Fragment
 import com.example.gowerexplorerapp3.R
 import com.example.gowerexplorerapp3.controller.MyUserManager
 import com.example.gowerexplorerapp3.controller.PoiManager
 import com.example.gowerexplorerapp3.ui.poiview.PoiEditActivity
 import com.example.gowerexplorerapp3.ui.logreg.LogInActivity
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import org.w3c.dom.Text
 
 class ProfileFragment : Fragment() {
 
@@ -34,6 +39,8 @@ class ProfileFragment : Fragment() {
     }
 
     override fun onStart() {
+        super.onStart()
+
         txtHelloUsername = view?.findViewById(R.id.txt_hello_username)!!
         btnLogInOut = view?.findViewById(R.id.btn_log_in_out)!!
         btnEmailPoIs = view?.findViewById(R.id.btn_email_pois)!!
@@ -41,7 +48,16 @@ class ProfileFragment : Fragment() {
             view?.findViewById<CardView>(R.id.card_admin)!!.isVisible = true
             adminSetup()
         }
-        super.onStart()
+
+        val txtLeaderboard = view?.findViewById<TextView>(R.id.txt_leaderboard)!!
+
+        val db = Firebase.firestore
+        db.collection("users").get().addOnSuccessListener { documents ->
+            for (user in documents) {
+                txtLeaderboard.text = "${txtLeaderboard.text} ${user["userName"]} , ${user["numberOfPoints"].toString()} points.\n\n"
+            }
+        }
+
     }
 
     private fun adminSetup() {
@@ -82,26 +98,31 @@ class ProfileFragment : Fragment() {
             // TODO sign out code here
         }
 
+        view?.findViewById<CardView>(R.id.card_profile)!!.isVisible = true
+
         btnEmailPoIs.isVisible = true
         btnEmailPoIs.setOnClickListener {
             var emailBody: String = MyUserManager.curUser!!.prepareEmailOfExploredPois()
             val title = "Explored PoIs"
 
-            val i = Intent(Intent.ACTION_SEND)
-            i.type = "message/rfc822"
-            i.putExtra(Intent.EXTRA_EMAIL, arrayOf(MyUserManager.mAuth.currentUser!!.email))
-            i.putExtra(Intent.EXTRA_SUBJECT, title)
-            i.putExtra(Intent.EXTRA_TEXT, emailBody)
+            val intent = Intent(Intent.ACTION_SEND)
+            intent.type = "message/rfc822"
+            intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(MyUserManager.mAuth.currentUser!!.email))
+            intent.putExtra(Intent.EXTRA_SUBJECT, title)
+            intent.putExtra(Intent.EXTRA_TEXT, emailBody)
             try {
-                requireContext().startActivity(i)
+                requireContext().startActivity(intent)
             } catch (ex: ActivityNotFoundException) {
                 Toast.makeText(
                     requireContext(),
-                    "There are no email clients installed.",
+                    "Error: There are no email clients installed.",
                     Toast.LENGTH_SHORT
                 ).show()
             }
         }
 
+        val txtNumberOfPoints = view?.findViewById<TextView>(R.id.txt_number_of_points)!!
+        txtNumberOfPoints.isVisible = true
+        txtNumberOfPoints.text = getString(R.string.you_have) + " " + MyUserManager.curUser!!.numberOfPoints + getString(R.string.points_end_sent)
     }
 }
