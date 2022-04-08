@@ -19,7 +19,6 @@
     <string name="filter_button">filter button</string>
     <string name="centre_map_to_my_location">centre map to my location</string>
     <string name="desc_gower_inn">A traditional country pub, located on the main road linking Gower and Swansea. Dog-friendly, and parking available.</string>
-    <string name="unexplored">Unexplored</string>
     <string name="title_activity_poi_view">PoiView</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
@@ -158,6 +157,8 @@
     <string name="submit">Submit</string>
     <string name="id_of_poi_to_edit_or_delete">ID of PoI To Edit or Delete</string>
     <string name="poi_type">Poi Type</string>
+    <string name="unexplored">Unexplored</string>
+    <string name="explored">Explored</string>
     <string-array name="poi_types">
         <item>Beach</item>
         <item>Nature</item>

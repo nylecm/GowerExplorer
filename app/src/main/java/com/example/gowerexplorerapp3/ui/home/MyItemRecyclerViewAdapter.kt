@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.gowerexplorerapp3.R
+import com.example.gowerexplorerapp3.controller.MyUserManager
 import com.example.gowerexplorerapp3.controller.PoiManager
 import com.example.gowerexplorerapp3.ui.poiview.PoiView
 import com.example.gowerexplorerapp3.databinding.FragmentItemBinding
@@ -45,10 +47,16 @@ class MyItemRecyclerViewAdapter(
         holder.distance.text =
             item.distanceTo(MapHome.lastUserLocation).roundToInt().toString() + "m | " + item.poiPoints.toString() + " Points"
         holder.poiDescription.text = item.description
-        holder.poiIsExplored.text = "Unexplored"
+
+        if (MyUserManager.curUser != null && MyUserManager.curUser!!.poisExplored.contains(item.poiId)) {
+            holder.poiIsExplored.text = holder.itemView.context.getString(R.string.explored)
+        } else if (MyUserManager.curUser != null) {
+            holder.poiIsExplored.text = holder.itemView.context.getString(R.string.unexplored)
+        }
+
 
         holder.itemView.setOnClickListener {
-            val intent = Intent(holder.itemView.getContext(), PoiView::class.java)
+            val intent = Intent(holder.itemView.context, PoiView::class.java)
             PoiManager.curPoi = item
             holder.itemView.context.startActivity(intent)
         }
