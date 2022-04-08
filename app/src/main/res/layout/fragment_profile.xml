@@ -37,6 +37,13 @@
                     android:layout_margin="@dimen/text_margin"
                     tools:ignore="SpeakableTextPresentCheck" />
 
+                <Button
+                    android:id="@+id/btn_email_pois"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin"
+                    android:text="@string/email_list_of_explored_pois"
+                    android:visibility="invisible"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 

@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GowerExplorerApp3">
         <activity
-            android:name=".ui.PoiEditActivity"
+            android:name=".ui.poiview.PoiEditActivity"
             android:exported="false" />
         <activity
             android:name=".ui.logreg.RegisterActivity"

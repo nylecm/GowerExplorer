@@ -1,7 +1,8 @@
 package com.example.gowerexplorerapp3.model
 
+import com.example.gowerexplorerapp3.controller.PoiManager
 import java.util.*
-import kotlin.collections.ArrayList
+
 
 class UserModel {
     var userName: String = ""
@@ -21,6 +22,23 @@ class UserModel {
 
     private fun addToDB(uid: String) {
 
+    }
+
+    fun prepareEmailOfExploredPois() : String {
+        val poiNames: ArrayList<String> = ArrayList()
+        for (poiId in poisExplored) {
+            for (poi in PoiManager.pois)
+                if (poi.poiId == poiId) {
+                    poiNames.add(poi.title)
+                }
+        }
+        var emailContent = "You have explored the following PoIs:\n\n"
+
+        for (poiName in poiNames) {
+            emailContent += "- $poiName,\n"
+        }
+        emailContent += "\n\n\n Kind Regards,\n\nGower Explorer"
+        return emailContent
     }
 }
 

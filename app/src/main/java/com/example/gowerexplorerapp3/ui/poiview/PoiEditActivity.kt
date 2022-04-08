@@ -1,4 +1,4 @@
-package com.example.gowerexplorerapp3.ui
+package com.example.gowerexplorerapp3.ui.poiview
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

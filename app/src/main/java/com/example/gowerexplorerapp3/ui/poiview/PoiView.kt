@@ -9,7 +9,6 @@ import android.location.LocationManager
 import android.net.Uri
 import android.os.Bundle
 import android.os.Looper
-import android.os.UserManager
 import android.provider.Settings
 import android.speech.tts.TextToSpeech
 import android.util.Log
@@ -17,13 +16,11 @@ import android.widget.*
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.view.isVisible
 import com.example.gowerexplorerapp3.R
 import com.example.gowerexplorerapp3.controller.MyUserManager
 import com.example.gowerexplorerapp3.controller.PoiManager
 import com.example.gowerexplorerapp3.databinding.ActivityPoiViewBinding
 import com.example.gowerexplorerapp3.model.ReviewModel
-import com.example.gowerexplorerapp3.ui.PoiEditActivity
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.firestore.GeoPoint

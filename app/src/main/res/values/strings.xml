@@ -159,6 +159,7 @@
     <string name="poi_type">Poi Type</string>
     <string name="unexplored">Unexplored</string>
     <string name="explored">Explored</string>
+    <string name="email_list_of_explored_pois">Email List of Explored PoIs</string>
     <string-array name="poi_types">
         <item>Beach</item>
         <item>Nature</item>
